@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="THMI_Dxlib_Project.vcxproj" />
+  <Project Path="THMI_Dxlib_Project.vcxproj" Id="b06bf18e-358d-4d0f-ba63-bebf169f9c78" />
 </Solution>
