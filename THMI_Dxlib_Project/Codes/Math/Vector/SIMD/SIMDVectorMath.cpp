@@ -27,7 +27,7 @@ SIMDVector SIMDVectorMath::Div(const SIMDVector& _vec1, const SIMDVector& _vec2)
 // スカラー倍
 SIMDVector SIMDVectorMath::MulScalar(const SIMDVector& _vec, float _value)
 {
-
+	
 }
 
 // スカラー割
