@@ -37,6 +37,12 @@ public:
 		value{ _mm_set1_ps(v) }
 	{}
 
+	// 型変換演算子
+	operator __m128() const
+	{
+		return value;
+	}
+
 	/// <summary>
 	/// 値引き出し関数
 	/// </summary>
@@ -58,24 +64,24 @@ public:
 	template<int X,int Y,int Z,int W>
 	static SIMDVector Shuffle(const SIMDVector& _value)
 	{
-		return _mm_shuffle_ps(_value.value, _value.value, _MM_SHUFFLE(W, Z, Y, X));
+		return _mm_shuffle_ps(_value, _value, _MM_SHUFFLE(W, Z, Y, X));
 	}
 
 	// 加算
 	SIMDVector operator+(const SIMDVector& _other) const
 	{
-		return SIMDVector(_mm_add_ps(value, _other.value));
+		return SIMDVector(_mm_add_ps(value, _other));
 	}
 
 	// 減算
 	SIMDVector operator-(const SIMDVector& _other) const
 	{
-		return SIMDVector(_mm_sub_ps(value, _other.value));
+		return SIMDVector(_mm_sub_ps(value, _other));
 	}
 
 	// 乗算
 	SIMDVector operator*(const SIMDVector& _other) const
 	{
-		return SIMDVector(_mm_mul_ps(value, _other.value));
+		return SIMDVector(_mm_mul_ps(value, _other));
 	}
 };
