@@ -98,7 +98,13 @@ SIMDVector SIMDVectorMath::Sqrt(const SIMDVector& _vec)
 // 逆平方根
 SIMDVector SIMDVectorMath::RSqrt(const SIMDVector& _vec)
 {
-	return _mm_rsqrt_ps(_vec);
+	SIMDVector rsqrt{ _mm_rsqrt_ps(_vec) };
+
+	SIMDVector half{ 0.5f };
+	SIMDVector three{ 3.0f };
+
+	// ニュートン法で補正
+	return Mul(rsqrt, Mul(Sub(three, Mul(_vec, Mul(rsqrt, rsqrt))), half));
 }
 
 // 逆数
