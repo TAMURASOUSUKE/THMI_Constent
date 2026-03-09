@@ -5,19 +5,19 @@
 // 加算
 SIMDVector SIMDVectorMath::Add(const SIMDVector& _vec1, const SIMDVector& _vec2)
 {
-	return _vec1 + _vec2;
+	return _mm_add_ps(_vec1, _vec2);
 }
 
 // 減算
 SIMDVector SIMDVectorMath::Sub(const SIMDVector& _vec1, const SIMDVector& _vec2)
 {
-	return _vec1 - _vec2;
+	return _mm_sub_ps(_vec1, _vec2);
 }
 
 // 乗算
 SIMDVector SIMDVectorMath::Mul(const SIMDVector& _vec1, const SIMDVector& _vec2)
 {
-	return _vec1 * _vec2;
+	return _mm_mul_ps(_vec1, _vec2);
 }
 
 // 割り算

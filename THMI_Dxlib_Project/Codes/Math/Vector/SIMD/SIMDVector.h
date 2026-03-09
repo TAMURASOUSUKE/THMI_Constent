@@ -66,22 +66,4 @@ public:
 	{
 		return _mm_shuffle_ps(_value, _value, _MM_SHUFFLE(W, Z, Y, X));
 	}
-
-	// 加算
-	SIMDVector operator+(const SIMDVector& _other) const
-	{
-		return SIMDVector(_mm_add_ps(value, _other));
-	}
-
-	// 減算
-	SIMDVector operator-(const SIMDVector& _other) const
-	{
-		return SIMDVector(_mm_sub_ps(value, _other));
-	}
-
-	// 乗算
-	SIMDVector operator*(const SIMDVector& _other) const
-	{
-		return SIMDVector(_mm_mul_ps(value, _other));
-	}
 };
