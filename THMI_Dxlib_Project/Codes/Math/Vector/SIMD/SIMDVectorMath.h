@@ -29,10 +29,8 @@ namespace SIMDVectorMath
 	float Length2(const SIMDVector& _vec);
 	// 長さ(Vector3)
 	float Length3(const SIMDVector& _vec);
-	// 正規化(Vector2)
-	SIMDVector Normalize2(const SIMDVector& _vec);
-	// 正規化(Vector3)
-	SIMDVector Normalize3(const SIMDVector& _vec);
+	// 正規化
+	SIMDVector Normalize(const SIMDVector& _vec);
 
 	// 平方根
 	SIMDVector Sqrt(const SIMDVector& _vec);
@@ -44,7 +42,4 @@ namespace SIMDVectorMath
 
 	// 反転
 	SIMDVector Negate(const SIMDVector& _vec);
-
-	// BroadCast
-	SIMDVector Splat(float _value);
 };
