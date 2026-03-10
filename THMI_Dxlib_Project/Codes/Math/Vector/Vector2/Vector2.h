@@ -1,6 +1,7 @@
 #pragma once
 
 #include <type_traits>
+#include "../SIMD/SIMDVector.h"
 
 template<typename T>
 struct alignas(16) Vector2
@@ -14,8 +15,17 @@ public:
 	static constexpr Vector2<T> LEFT{ -1.0,0.0 };
 	static constexpr Vector2<T> RIGHT{ 1.0,0.0 };
 public:
-	// 数値
-	T x{ 0.0 }, y{ 0.0 };
+	// アクセス用数値
+	union
+	{
+		struct 
+		{
+			float x;
+			float y;
+		};
+
+		SIMDVector value;
+	};
 
 public:
 	// コンストラクタ
@@ -24,8 +34,7 @@ public:
 	/// <param name="_x">X</param>
 	/// <param name="_y">Y</param>
 	Vector2(T _x, T _y) :
-		x{ _x },
-		y{ _y }
+		value(_x,_y,0,0)
 	{}
 
 	// 加算
@@ -85,8 +94,4 @@ public:
 	static float Dot(const Vector2& vec1, const Vector2& vec2);
 	// 外積
 	static float Cross(const Vector2& vec1, const Vector2& vec2);
-
-private:
-	// SIMD用ダミー
-	T z{ 0 }, w{ 0 };
 };

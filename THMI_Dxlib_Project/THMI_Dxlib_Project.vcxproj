@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp" />
     <ClCompile Include="Codes\Math\Vector\Vector2\Vector2.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVector.h" />
+    <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h" />
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
