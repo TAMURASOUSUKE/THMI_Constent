@@ -4,42 +4,60 @@
 
 namespace SIMDVectorMath
 {
+	// ---SIMDVectorFloatの演算---
 	// 加算
-	SIMDVector Add(const SIMDVector& _vec1, const SIMDVector& _vec2);
+	SIMDVectorFloat Add(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 	// 減算
-	SIMDVector Sub(const SIMDVector& _vec1, const SIMDVector& _vec2);
+	SIMDVectorFloat Sub(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 	// 乗算
-	SIMDVector Mul(const SIMDVector& _vec1, const SIMDVector& _vec2);
+	SIMDVectorFloat Mul(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 	// 割り算
-	SIMDVector Div(const SIMDVector& _vec1, const SIMDVector& _vec2);
+	SIMDVectorFloat Div(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 
 	// スカラー倍
-	SIMDVector MulScalar(const SIMDVector& _vec, float _value);
+	SIMDVectorFloat MulScalar(const SIMDVectorFloat& _vec, float _value);
 	// スカラー割
-	SIMDVector DivScalar(const SIMDVector& _vec, float _value);
+	SIMDVectorFloat DivScalar(const SIMDVectorFloat& _vec, float _value);
 
 	// 内積(Vector2)
-	float Dot2(const SIMDVector& _vec1, const SIMDVector& _vec2);
+	float Dot2(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 	// 内積(Vector3)
-	float Dot3(const SIMDVector& _vec1, const SIMDVector& _vec2);
+	float Dot3(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 	// 外積(Vector3)
-	SIMDVector Cross3(const SIMDVector& _vec1, const SIMDVector& _vec2);
+	SIMDVectorFloat Cross3(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 
 	// 長さ(Vector2)
-	float Length2(const SIMDVector& _vec);
+	float Length2(const SIMDVectorFloat& _vec);
 	// 長さ(Vector3)
-	float Length3(const SIMDVector& _vec);
+	float Length3(const SIMDVectorFloat& _vec);
 	// 正規化
-	SIMDVector Normalize(const SIMDVector& _vec);
+	SIMDVectorFloat Normalize(const SIMDVectorFloat& _vec);
 
 	// 平方根
-	SIMDVector Sqrt(const SIMDVector& _vec);
+	SIMDVectorFloat Sqrt(const SIMDVectorFloat& _vec);
 	// 逆平方根
-	SIMDVector RSqrt(const SIMDVector& _vec);
+	SIMDVectorFloat RSqrt(const SIMDVectorFloat& _vec);
 
 	// 逆数
-	SIMDVector Reciprocal(const SIMDVector& _vec);
+	SIMDVectorFloat Reciprocal(const SIMDVectorFloat& _vec);
 
 	// 反転
-	SIMDVector Negate(const SIMDVector& _vec);
+	SIMDVectorFloat Negate(const SIMDVectorFloat& _vec);
+
+	// 等価
+	bool Equals(const SIMDVectorFloat& a, const SIMDVectorFloat& b);
+
+	// ---SIMDVectorIntの演算---
+	// 加算
+	SIMDVectorInt Add(const SIMDVectorInt& _vec1, const SIMDVectorInt& _vec2);
+	// 減算
+	SIMDVectorInt Sub(const SIMDVectorInt& _vec1, const SIMDVectorInt& _vec2);
+	// 乗算
+	SIMDVectorInt Mul(const SIMDVectorInt& _vec1, const SIMDVectorInt& _vec2);
+
+	// スカラー倍
+	SIMDVectorInt MulScalar(const SIMDVectorInt& _vec, int _value);
+
+	// 等価
+	bool Equals(const SIMDVectorInt& a, const SIMDVectorInt& b);
 };

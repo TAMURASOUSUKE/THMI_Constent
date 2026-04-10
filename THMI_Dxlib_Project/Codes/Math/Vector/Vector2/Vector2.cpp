@@ -1,23 +1,21 @@
+#include <math.h>
 #include "../SIMD/SIMDVectorMath.h"
 #include "Vector2.h"
 
 // 加算
-template<typename T>
-Vector2<T> Vector2<T>::operator+(const Vector2<T>& _other) const
+Vector2 Vector2::operator+(const Vector2& _other) const
 {
 	return SIMDVectorMath::Add(simd, _other.simd);
 }
 
 // 減算
-template<typename T>
-Vector2<T> Vector2<T>::operator-(const Vector2<T>& _other)const
+Vector2 Vector2::operator-(const Vector2& _other)const
 {
 	return SIMDVectorMath::Sub(simd, _other.simd);
 }
 
 // 乗算
-template<typename T>
-Vector2<T> Vector2<T>::operator*(float _value)const
+Vector2 Vector2::operator*(float _value)const
 {
 	return SIMDVectorMath::MulScalar(simd, _value);
 }
@@ -26,96 +24,87 @@ Vector2<T> Vector2<T>::operator*(float _value)const
 /// 徐算(整数の場合static_castで整数になります)
 /// </summary>
 /// <returns>0徐算の場合は、そのままの値を返します</returns>
-template<typename T>
-Vector2<T> Vector2<T>::operator/(float _value)const
+Vector2 Vector2::operator/(float _value)const
 {
 	return SIMDVectorMath::DivScalar(simd, _value);
 }
 
 // 加算
-template<typename T>
-Vector2<T>& Vector2<T>::operator+=(const Vector2<T>& _other)
+Vector2& Vector2::operator+=(const Vector2& _other)
 {
-	return simd = SIMDVectorMath::Add(simd, _other.simd);
+	simd = SIMDVectorMath::Add(simd, _other.simd);
+	return *this;
 }
 
 // 減算
-template<typename T>
-Vector2<T>& Vector2<T>::operator-=(const Vector2<T>& _other)
+Vector2& Vector2::operator-=(const Vector2& _other)
 {
-	return simd = SIMDVectorMath::Sub(simd, _other.simd);
+	simd = SIMDVectorMath::Sub(simd, _other.simd);
+	return *this;
 }
 
 // 乗算
-template<typename T>
-Vector2<T>& Vector2<T>::operator*=(float _value)
+Vector2& Vector2::operator*=(float _value)
 {
-	return simd = SIMDVectorMath::MulScalar(simd, _value);
+	simd = SIMDVectorMath::MulScalar(simd, _value);
+	return *this;
 }
 
 /// <summary>
 /// 徐算(整数の場合static_castで整数になります)
 /// </summary>
 /// <returns>0徐算の場合は、そのままの値を返します</returns>
-template<typename T>
-Vector2<T>& Vector2<T>::operator/=(float _value)
+Vector2& Vector2::operator/=(float _value)
 {
-	return simd = SIMDVectorMath::DivScalar(simd, _value);
+	simd = SIMDVectorMath::DivScalar(simd, _value);
+	return *this;
 }
 
 // 逆ベクトル
-template<typename T>
-Vector2<T> Vector2<T>::operator-()const
+Vector2 Vector2::operator-()const
 {
 	return SIMDVectorMath::Negate(simd);
 }
 
 // 等価
-template<typename T>
-bool Vector2<T>::operator==(const Vector2<T>& _other) const
+bool Vector2::operator==(const Vector2& _other) const
 {
-
+	return SIMDVectorMath::Equals(simd, _other.simd);
 }
 
 // 不等価
-template<typename T>
-bool Vector2<T>::operator!=(const Vector2<T>& _other) const
+bool Vector2::operator!=(const Vector2& _other) const
 {
-
+	return !SIMDVectorMath::Equals(simd, _other.simd);
 }
 
 // ベクトルの長さ(実数のみ)
-template<typename T>
-float Vector2<T>::Length() const requires std::is_floating_point_v<T>
+float Vector2::Length() const
 {
 	return SIMDVectorMath::Length2(simd);
 }
 
 // ベクトルの長さの2乗(実数のみ)
-template<typename T>
-float Vector2<T>::LengthSqr() const requires std::is_floating_point_v<T>
+float Vector2::LengthSqr() const
 {
 	return SIMDVectorMath::Dot2(simd, simd);
 }
 
 // 2つのベクトル間の距離(実数のみ)
-template<typename T>
-static float Vector2<T>::Distance(const Vector2<T>& _from, const Vector2<T>& _to) requires std::is_floating_point_v<T>
+float Vector2::Distance(const Vector2& _from, const Vector2& _to)
 {
 	return SIMDVectorMath::Length2((_to - _from).simd);
 }
 
 // 2つのベクトル間の距離の2乗(実数のみ)
-template<typename T>
-static float Vector2<T>::DistanceSqr(const Vector2<T>& _from, const Vector2<T>& _to) requires std::is_floating_point_v<T>
+float Vector2::DistanceSqr(const Vector2& _from, const Vector2& _to)
 {
-	Vector2<T> dist{ _to - _from };
+	Vector2 dist{ _to - _from };
 	return SIMDVectorMath::Dot2(dist, dist);
 }
 
 // 2つのベクトル間の角度(実数のみ)
-template<typename T>
-static float Vector2<T>::Angle(const Vector2<T>& _from, const Vector2<T>& _to) requires std::is_floating_point_v<T>
+float Vector2::Angle(const Vector2& _from, const Vector2& _to)
 {
 	float fromLen = _from.Length();
 	float toLen = _to.Length();
@@ -129,43 +118,39 @@ static float Vector2<T>::Angle(const Vector2<T>& _from, const Vector2<T>& _to) r
 }
 
 // 正規化(値の変化有)(実数のみ)
-template<typename T>
-Vector2<T>& Vector2<T>::Normalize() requires std::is_floating_point_v<T>
+Vector2& Vector2::Normalize()
 {
-	return simd = SIMDVectorMath::Normalize(simd);
+	simd = SIMDVectorMath::Normalize(simd);
+	return *this;
 }
 
 // 正規化(値の変化有)(実数のみ)
-template<typename T>
-static Vector2<T>& Vector2<T>::Normalize(const Vector2<T>& _vec) requires std::is_floating_point_v<T>
+Vector2& Vector2::Normalize(Vector2& _vec)
 {
-	return simd = SIMDVectorMath::Normalize(_vec.simd);
+	_vec.simd = SIMDVectorMath::Normalize(_vec);
+	return _vec;
 }
 
 // 正規化(値の変化無)(実数のみ)
-template<typename T>
-Vector2<T> Vector2<T>::Normalized() requires std::is_floating_point_v<T>
+Vector2 Vector2::Normalized()
 {
 	return SIMDVectorMath::Normalize(simd);
 }
 
 // 正規化(値の変化無)(実数のみ)
-template<typename T>
-static Vector2<T> Vector2<T>::Normalized(const Vector2<T>& _vec) requires std::is_floating_point_v<T>
+Vector2 Vector2::Normalized(const Vector2& _vec)
 {
 	return SIMDVectorMath::Normalize(_vec.simd);
 }
 
 // 内積
-template<typename T>
-static float Vector2<T>::Dot(const Vector2<T>& _vec1, const Vector2<T>& _vec2)
+float Vector2::Dot(const Vector2& _vec1, const Vector2& _vec2)
 {
 	return SIMDVectorMath::Dot2(_vec1, _vec2);
 }
 
 // 外積
-template<typename T>
-static float Vector2<T>::Cross(const Vector2<T>& _vec1, const Vector2<T>& _vec2)
+float Vector2::Cross(const Vector2& _vec1, const Vector2& _vec2)
 {
 	return _vec1.x * _vec2.y - _vec2.x * _vec1.y;
 }
