@@ -99,5 +99,5 @@ public:
 	// 内積
 	static float Dot(const Vector3& _vec1, const Vector3& _vec2);
 	// 外積
-	static float Cross(const Vector3& _vec1, const Vector3& _vec2);
+	static Vector3 Cross(const Vector3& _vec1, const Vector3& _vec2);
 };
