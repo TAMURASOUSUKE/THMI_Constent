@@ -4,7 +4,7 @@
 
 // 128bit SIMDレジスタラッパー構造体なので、ヘッダ内で収める
 
-struct alignas(16) SIMDVector
+struct alignas(16) SIMDVectorFloat
 {
 public:
 	__m128 value;

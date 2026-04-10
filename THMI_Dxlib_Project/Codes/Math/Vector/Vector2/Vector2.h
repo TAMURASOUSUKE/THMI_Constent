@@ -22,6 +22,7 @@ public:
 		{
 			float x;
 			float y;
+			float pad[2];
 		};
 
 		// SIMD計算用
