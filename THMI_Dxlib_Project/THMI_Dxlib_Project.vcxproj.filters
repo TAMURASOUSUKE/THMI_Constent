@@ -40,6 +40,9 @@
     <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp">
       <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
     </ClCompile>
+    <ClCompile Include="Codes\Math\Vector\Vector2\Vector2Int.cpp">
+      <Filter>ソース ファイル\Math\Vector\Vector2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h">
@@ -50,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h">
       <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Math\Vector\Vector2\Vector2Int.h">
+      <Filter>ソース ファイル\Math\Vector\Vector2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
