@@ -5,10 +5,51 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="ソース ファイル\Math">
+      <UniqueIdentifier>{d4f1b5c1-8d70-4240-935b-16ab3c1a171e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math\Matrix">
+      <UniqueIdentifier>{f69f2826-6b78-4f40-9e58-451ff3e51bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math\Transform">
+      <UniqueIdentifier>{4dde8dfa-6d46-4137-8441-9f67fcc2ff1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math\Quaternion">
+      <UniqueIdentifier>{68e406ae-48d4-4a0e-94ba-d693f04df91f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math\Vector">
+      <UniqueIdentifier>{725b8c33-b013-4d07-9adc-4cf4cd260d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math\Vector\Vector3">
+      <UniqueIdentifier>{d5b78a3b-8e7a-4c83-adc8-5a478737e692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math\Vector\Vector2">
+      <UniqueIdentifier>{2cf85b58-2375-4a9d-bd36-67956039d106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Math\Vector\SIMD">
+      <UniqueIdentifier>{ac986da4-1212-45ca-8221-38fc85a64235}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Codes\Math\Vector\Vector2\Vector2.cpp">
+      <Filter>ソース ファイル\Math\Vector\Vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp">
+      <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h">
+      <Filter>ソース ファイル\Math\Vector\Vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVector.h">
+      <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h">
+      <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
