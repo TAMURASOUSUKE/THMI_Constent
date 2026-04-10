@@ -142,6 +142,8 @@
     <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp" />
     <ClCompile Include="Codes\Math\Vector\Vector2\Vector2.cpp" />
     <ClCompile Include="Codes\Math\Vector\Vector2\Vector2Int.cpp" />
+    <ClCompile Include="Codes\Math\Vector\Vector3\Vector3.cpp" />
+    <ClCompile Include="Codes\Math\Vector\Vector3\Vector3Int.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +151,8 @@
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h" />
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h" />
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2Int.h" />
+    <ClInclude Include="Codes\Math\Vector\Vector3\Vector3.h" />
+    <ClInclude Include="Codes\Math\Vector\Vector3\Vector3Int.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
