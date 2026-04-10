@@ -87,7 +87,7 @@ public:
 	}
 
 	/// <param name="_ptr">最初の値のアドレス</param>
-	SIMDVectorInt(const float* _ptr) :
+	SIMDVectorInt(const int* _ptr) :
 		value{ _mm_load_si128((__m128i*)_ptr) }
 	{
 	}
@@ -96,13 +96,13 @@ public:
 	/// <param name="_y">値2</param>
 	/// <param name="_z">値3</param>
 	/// <param name="_w">値4</param>
-	SIMDVectorInt(float _x, float _y, float _z, float _w) :
+	SIMDVectorInt(int _x, int _y, int _z, int _w) :
 		value{ _mm_set_epi32(_w,_z,_y,_x) }
 	{
 	}
 
 	// splat
-	SIMDVectorInt(float v) :
+	SIMDVectorInt(int v) :
 		value{ _mm_set1_epi32(v) }
 	{
 	}
@@ -134,6 +134,6 @@ public:
 	template<int X, int Y, int Z, int W>
 	static SIMDVectorInt Shuffle(const SIMDVectorInt& _value)
 	{
-		return _mm_shuffle_ps(_value, _value, _MM_SHUFFLE(W, Z, Y, X));
+		return _mm_shuffle_epi32(_value, _value, _MM_SHUFFLE(W, Z, Y, X));
 	}
 };
