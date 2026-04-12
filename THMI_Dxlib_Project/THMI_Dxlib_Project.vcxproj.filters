@@ -49,6 +49,9 @@
     <ClCompile Include="Codes\Math\Vector\Vector3\Vector3Int.cpp">
       <Filter>ソース ファイル\Math\Vector\Vector3</Filter>
     </ClCompile>
+    <ClCompile Include="Codes\Math\Matrix\Matrix.cpp">
+      <Filter>ソース ファイル\Math\Matrix</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h">
@@ -68,6 +71,9 @@
     </ClInclude>
     <ClInclude Include="Codes\Math\Vector\Vector3\Vector3Int.h">
       <Filter>ソース ファイル\Math\Vector\Vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Math\Matrix\Matrix.h">
+      <Filter>ソース ファイル\Math\Matrix</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -43,6 +43,7 @@ public:
 		col[3] = SIMDVectorFloat{ _m30,_m31,_m32,_m33 };
 	}
 
+	// 単位行列
 	Matrix4x4 Identity();
 
 	// 加算
