@@ -1,9 +1,10 @@
-#include <Dxlib.h>
+﻿#include <Dxlib.h>
 #include "ItouDebugScene.h"
 
 void ItouDebugScene::Draw()
 {
 	// 描画用処理
+	DrawString(0, 0, "ここは伊藤シーンです", GetColor(255, 255, 255), GetColor(255, 255, 255));
 }
 
 void ItouDebugScene::Initialize()

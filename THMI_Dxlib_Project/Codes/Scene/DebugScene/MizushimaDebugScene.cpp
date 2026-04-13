@@ -1,9 +1,10 @@
-#include <Dxlib.h>
+﻿#include <Dxlib.h>
 #include "MizushimaDebugScene.h"
 
 void MizushimaDebugScene::Draw()
 {
 	// 描画用処理
+	DrawString(0, 0, "ここは水島シーンです", GetColor(255, 255, 255), GetColor(255, 255, 255));
 }
 
 void MizushimaDebugScene::Initialize()

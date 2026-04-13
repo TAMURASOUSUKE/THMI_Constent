@@ -1,9 +1,10 @@
-#include <Dxlib.h>
+﻿#include <Dxlib.h>
 #include "HashinoDebugScene.h"
 
 void HashinoDebugScene::Draw()
 {
 	// 描画用処理
+	DrawString(0, 0, "ここは橋野シーンです", GetColor(255, 255, 255), GetColor(255, 255, 255));
 }
 
 void HashinoDebugScene::Initialize()
