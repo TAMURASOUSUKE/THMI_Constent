@@ -23,6 +23,9 @@ namespace SIMDVectorMath
 	float Dot2(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 	// 内積(Vector3)
 	float Dot3(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
+	// 内積(Vector4)
+	float Dot4(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
+
 	// 外積(Vector3)
 	SIMDVectorFloat Cross3(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 

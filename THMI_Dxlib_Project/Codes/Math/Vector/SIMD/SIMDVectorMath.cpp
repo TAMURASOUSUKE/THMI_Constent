@@ -47,7 +47,13 @@ float SIMDVectorMath::Dot2(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& 
 // 内積(Vector3)
 float SIMDVectorMath::Dot3(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
 {
-	return _mm_cvtss_f32(_mm_dp_ps(_vec1, _vec2, 0x71));
+	return _mm_cvtss_f32(_mm_dp_ps(_vec1, _vec2, 0x7F));
+}
+
+// 内積(Vector4)
+float SIMDVectorMath::Dot4(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
+{
+	return _mm_cvtss_f32(_mm_dp_ps(_vec1, _vec2, 0xFF));
 }
 
 // 外積(Vector3)

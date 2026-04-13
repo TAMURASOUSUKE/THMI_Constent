@@ -67,6 +67,30 @@ public:
 	{
 		return _mm_shuffle_ps(_value, _value, _MM_SHUFFLE(W, Z, Y, X));
 	}
+
+	// 交互に並べる(上の2つ)
+	static SIMDVectorFloat UnpackHigh(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
+	{
+		return _mm_unpackhi_ps(_vec1, _vec2);
+	}
+
+	// 交互に並べる(上の2つ)
+	static SIMDVectorFloat UnpackLow(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
+	{
+		return _mm_unpacklo_ps(_vec1, _vec2);
+	}
+
+	// 上二つを並べる
+	static SIMDVectorFloat MoveHigh(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
+	{
+		return _mm_movehl_ps(_vec2, _vec1);
+	}
+
+	// 下二つを並べる
+	static SIMDVectorFloat MoveLow(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
+	{
+		return _mm_movelh_ps(_vec1, _vec2);
+	}
 };
 
 struct alignas(16) SIMDVectorInt

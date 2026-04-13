@@ -32,8 +32,8 @@ public:
 
 	/// <param name="_x">X</param>
 	/// <param name="_y">Y</param>
-	Vector3(float _x, float _y) :
-		simd(_x, _y, 0, 0)
+	Vector3(float _x, float _y, float _z) :
+		simd(_x, _y, _z, 0)
 	{
 	}
 
