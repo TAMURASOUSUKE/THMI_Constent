@@ -138,6 +138,18 @@ Matrix4x4& Matrix4x4::operator/=(const float& _value)
 	return *this;
 }
 
+// 転置(変化しない)
+Matrix4x4 Transposed()
+{
+
+}
+
+// 転置
+Matrix4x4& Transpose()
+{
+
+}
+
 // 一次変換
 Vector3 Matrix4x4::operator *(const Vector3& _other) const 
 {

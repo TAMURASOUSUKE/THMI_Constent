@@ -80,6 +80,11 @@ public:
 	// スカラー割
 	Matrix4x4& operator/=(const float& _value);
 
+	// 転置(変化しない)
+	Matrix4x4 Transposed();
+	// 転置
+	Matrix4x4& Transpose();
+
 	// 一次変換
 	Vector3 operator *(const Vector3& _other) const;
 
