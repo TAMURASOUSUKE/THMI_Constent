@@ -12,7 +12,7 @@ public:
 	// 描画
 	void Draw() override;
 	// シーンの種類を取得する関数
-	SceneType GetType() override { return SceneType::Mizushima; }
+	SceneType GetType() override { return SceneType::Hashino; }
 
 private:
 	void Initialize() override; // 最初に行う処理
