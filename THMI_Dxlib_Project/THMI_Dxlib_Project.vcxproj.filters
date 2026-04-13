@@ -29,6 +29,21 @@
     <Filter Include="ソース ファイル\Math\Vector\SIMD">
       <UniqueIdentifier>{ac986da4-1212-45ca-8221-38fc85a64235}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Constant">
+      <UniqueIdentifier>{f2f4ecd9-312d-4b08-b09f-2c23fa77beab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Constant\SceneConstant">
+      <UniqueIdentifier>{8dbc5f87-bc00-4468-90e6-6264df801cb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{3c076684-83bd-482c-b2a1-5aa3843e2c78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\Bases">
+      <UniqueIdentifier>{28b93ae5-2911-4d0e-b41d-f556bb47cfe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\DebugScene">
+      <UniqueIdentifier>{ea56655f-939c-490c-91cf-4a334eec6e1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -40,6 +55,27 @@
     <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp">
       <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
     </ClCompile>
+    <ClCompile Include="Codes\Scene\Bases\SceneFactory.cpp">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Scene\Bases\SceneManager.cpp">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Scene\DebugScene\ChooseDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Scene\DebugScene\HashinoDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Scene\DebugScene\ItouDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Scene\DebugScene\MizushimaDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Scene\DebugScene\TamuraDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h">
@@ -50,6 +86,33 @@
     </ClInclude>
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h">
       <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\SceneConstant\SceneConstant.h">
+      <Filter>ソース ファイル\Constant\SceneConstant</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\Bases\SceneBase.h">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\Bases\SceneFactory.h">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\Bases\SceneManager.h">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\DebugScene\ChooseDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\DebugScene\HashinoDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\DebugScene\ItouDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\DebugScene\MizushimaDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\DebugScene\TamuraDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
