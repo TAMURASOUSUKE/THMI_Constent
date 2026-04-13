@@ -6,6 +6,7 @@
 enum class SceneType
 {
 	None = -1, // 未定義
+	ChooseDebug, // どのデバッグシーンに行くのかを選択するシーン
 	Tamura,  // 田村用デバッグシーン
 	Mizushima, // 水島用デバッグシーン
 	Hashino, // 橋野用デバッグシーン
