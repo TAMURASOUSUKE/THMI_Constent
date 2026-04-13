@@ -44,6 +44,12 @@
     <Filter Include="ソース ファイル\Scene\DebugScene">
       <UniqueIdentifier>{ea56655f-939c-490c-91cf-4a334eec6e1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Application">
+      <UniqueIdentifier>{94890f4f-0b7f-4a0c-a788-d799bc4082a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Constant\SystemConstant">
+      <UniqueIdentifier>{dc672660-815c-44d8-80ca-9f9b37c2f997}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="Codes\Scene\DebugScene\TamuraDebugScene.cpp">
       <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Application\Application.cpp">
+      <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +122,12 @@
     </ClInclude>
     <ClInclude Include="Codes\Scene\DebugScene\TamuraDebugScene.h">
       <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\SystemConstant\SystemConstant.h">
+      <Filter>ソース ファイル\Constant\SystemConstant</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Application\Application.h">
+      <Filter>ソース ファイル\Application</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
