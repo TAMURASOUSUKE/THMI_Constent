@@ -11,7 +11,8 @@ std::map<SceneType, std::function<std::unique_ptr<SceneBase>()>> SceneFactory::c
 
 void SceneFactory::Initialize()
 {
-	creationMap[SceneType::ChooseDebug] = []() { return std::make_unique<ChooseDebugScene>(); }; // デバッグシーン選択用シーンを作成する 
+	creationMap[SceneType::ChooseDebug] = []() { return std::make_unique<ChooseDebugScene>(); }; // デバッグシーン選択用シーンを作成する
+	creationMap[SceneType::ChooseDebug] = []() { return std::make_unique<HashinoDebugScene>(); }; // 橋野デバッグシーンを作成する
 }
 
 std::unique_ptr<SceneBase> SceneFactory::CreateScene(SceneType _type)
