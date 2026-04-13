@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Codes\Application\Application.cpp" />
     <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp" />
     <ClCompile Include="Codes\Math\Vector\Vector2\Vector2.cpp" />
     <ClCompile Include="Codes\Scene\Bases\SceneFactory.cpp" />
@@ -151,7 +152,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Codes\Application\Application.h" />
     <ClInclude Include="Codes\Constant\SceneConstant\SceneConstant.h" />
+    <ClInclude Include="Codes\Constant\SystemConstant\SystemConstant.h" />
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVector.h" />
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h" />
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h" />

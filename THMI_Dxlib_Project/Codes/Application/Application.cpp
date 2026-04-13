@@ -61,5 +61,7 @@ void Application::Draw()
 {
 	ClearDrawScreen(); // 画面のクリア
 
+	DrawString(0, 0, "描画できてるよ", GetColor(255, 255, 255), GetColor(255, 255, 255));
+
 	ScreenFlip(); // 画面のフリップ
 }
