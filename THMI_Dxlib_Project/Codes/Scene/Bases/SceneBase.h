@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "SceneConstant/SceneConstant.h"
 
 // 各シーンの基底となるクラス
