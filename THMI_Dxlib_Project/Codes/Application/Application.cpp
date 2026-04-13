@@ -1,4 +1,4 @@
-#include <windows.h>
+﻿#include <windows.h>
 #include <timeapi.h> // 高精度タイマーを使うため
 #include <Dxlib.h>
 #include "SystemConstant/SystemConstant.h"
