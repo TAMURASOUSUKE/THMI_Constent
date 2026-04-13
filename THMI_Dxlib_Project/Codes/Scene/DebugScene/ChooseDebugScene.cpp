@@ -1,15 +1,15 @@
-#include <Dxlib.h>
+﻿#include <Dxlib.h>
 #include "ChooseDebugScene.h"
 
 void ChooseDebugScene::Draw()
 {
 	// 画面に表示する文字列
-	DrawString(20, 40, "ここはデバッグシーンを選択するシーンです。押されたキーによってシーンが切り替わります", GetColor(255, 255, 255));
-	DrawString(20, 60, "F1 -> 田村用デバッグシーン", GetColor(255, 255, 255));
-	DrawString(20, 80, "F2 -> 水島用デバッグシーン", GetColor(255, 255, 255));
-	DrawString(20, 100, "F3 -> 橋野用デバッグシーン", GetColor(255, 255, 255));
-	DrawString(20, 120, "F4 -> 伊藤用デバッグシーン", GetColor(255, 255, 255));
-	DrawString(20, 140, "各デバッグシーンではEnterを押すとこのシーンヘ戻ってくるようにしています", GetColor(255, 255, 255));
+	DrawString(20, 40, "ここはデバッグシーンを選択するシーンです。押されたキーによってシーンが切り替わります", GetColor(255, 255, 255), GetColor(255, 255, 255));
+	DrawString(20, 60, "F1 -> 田村用デバッグシーン", GetColor(255, 255, 255), GetColor(255, 255, 255));
+	DrawString(20, 80, "F2 -> 水島用デバッグシーン", GetColor(255, 255, 255), GetColor(255, 255, 255));
+	DrawString(20, 100, "F3 -> 橋野用デバッグシーン", GetColor(255, 255, 255), GetColor(255, 255, 255));
+	DrawString(20, 120, "F4 -> 伊藤用デバッグシーン", GetColor(255, 255, 255), GetColor(255, 255, 255));
+	DrawString(20, 140, "各デバッグシーンではEnterを押すとこのシーンヘ戻ってくるようにしています", GetColor(255, 255, 255), GetColor(255, 255, 255));
 }
 
 void ChooseDebugScene::Initialize()
@@ -34,4 +34,5 @@ SceneType ChooseDebugScene::Terminate()
 	if (CheckHitKey(KEY_INPUT_F2)) return SceneType::Mizushima;
 	if (CheckHitKey(KEY_INPUT_F3)) return SceneType::Hashino;
 	if (CheckHitKey(KEY_INPUT_F4)) return SceneType::Itou;
+	return SceneType::ChooseDebug;
 }

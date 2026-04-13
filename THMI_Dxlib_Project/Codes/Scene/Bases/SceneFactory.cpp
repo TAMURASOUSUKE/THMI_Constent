@@ -1,4 +1,4 @@
-#include "SceneFactory.h"
+﻿#include "SceneFactory.h"
 
 // 具体シーンのインクルード
 

@@ -1,9 +1,10 @@
-#include <Dxlib.h>
+﻿#include <Dxlib.h>
 #include "TamuraDebugScene.h"
 
 void TamuraDebugScene::Draw()
 {
 	// 描画用処理
+	DrawString(0, 0, "ここは田村シーンです", GetColor(255, 255, 255), GetColor(255, 255, 255));
 }
 
 void TamuraDebugScene::Initialize()

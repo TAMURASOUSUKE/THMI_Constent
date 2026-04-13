@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "SceneConstant/SceneConstant.h"
 #include "../Bases/SceneBase.h"
 
