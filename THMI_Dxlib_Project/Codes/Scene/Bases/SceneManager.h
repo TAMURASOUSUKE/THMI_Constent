@@ -1,17 +1,27 @@
 #pragma once
 #include <memory>
-#include <map>
-#include <functional>
+#include "SceneConstant/SceneConstant.h"
 #include "SceneBase.h"
 
-// シーンを作成するためのクラス
-class SceneFactory
+// シーンを管理するクラス
+class SceneManager
 {
 public:
-	// 作るシーンを設定する初期化関数
-	static void Initialize();
-	// シーンを設定するだけで生成できるようにする関数
-	static std::unique_ptr<SceneBase> CreateScene(SceneType _type);
+	// コンストラクタ
+	SceneManager();
+	~SceneManager() = default;
+
+	// 最初のシーンを決定する関数
+	void SetFirstScene(SceneType _type);
+
+	// 更新関数
+	void Update();
+	// 固定時間更新関数
+	void FixedUpdate();
+	// 描画関数
+	void Draw();
 
 private:
-	static std::map<SceneType, std::function<std::unique_ptr<SceneBase>()>> creationMap; // key = SceneType, value = 具体シーンのインスタンスを返す関数のmap
+	std::unique_ptr<SceneBase> currentScene; // 現在のシーンのポインタ
+
+};
