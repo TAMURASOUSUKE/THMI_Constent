@@ -19,13 +19,14 @@ Application::~Application()
 
 bool Application::Initialize()
 {
-	// 画面サイズの決定
-	SetGraphMode(WINDOW_WIDTH, WINDOW_HEIGHT, COLOR_DEPTH);
-
 	// ウィンドウモードの設定(デバッグモードの時はウィンドウモードでそれ以外の時は全画面になります)
 #ifdef _DEBUG
+	// デバッグ時の画面サイズの決定
+	SetGraphMode(DEBUG_WINDOW_WIDTH, DEBUG_WINDOW_HEIGHT, COLOR_DEPTH);
 	ChangeWindowMode(true);
 #else
+	// 画面サイズの決定
+	SetGraphMode(WINDOW_WIDTH, WINDOW_HEIGHT, COLOR_DEPTH);
 	ChangeWindowMode(false);
 #endif // _DEBUG
 

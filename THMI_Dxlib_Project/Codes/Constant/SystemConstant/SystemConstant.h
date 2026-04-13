@@ -2,7 +2,9 @@
 
 // ウィンドウやシステム関連の定数等を作る
 constexpr int WINDOW_WIDTH{ 1920 }; // 画面の横幅
+constexpr int DEBUG_WINDOW_WIDTH{ 1280 }; // デバッグ用の画面の横幅
 constexpr int WINDOW_HEIGHT{ 1080 }; // 画面の縦幅
+constexpr int DEBUG_WINDOW_HEIGHT{ 720 }; // デバッグ用の画面の縦幅
 constexpr int COLOR_DEPTH{ 32 }; // 色の深度
 constexpr int ONE_SEC_MICRO{ 1000000 }; //  1秒 = 1,000,000マイクロ秒
 constexpr int ONE_SEC_MILLI{ 1000 }; // 1秒 = 1,000ミリ秒
