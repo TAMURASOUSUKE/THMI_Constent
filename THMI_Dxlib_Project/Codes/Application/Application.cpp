@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <timeapi.h> // 高精度タイマーを使うため
 #include <Dxlib.h>
+#include "SystemConstant/SystemConstant.h"
 #include "Application.h"
 
 #pragma comment(lib, "winmm.lib") // 高精度タイマーを使うためのリンカ接続
@@ -19,7 +20,7 @@ Application::~Application()
 bool Application::Initialize()
 {
 	// 画面サイズの決定
-	SetGraphMode(1920, 1080, 32);
+	SetGraphMode(WINDOW_WIDTH, WINDOW_HEIGHT, COLOR_DEPTH);
 
 	// ウィンドウモードの設定(デバッグモードの時はウィンドウモードでそれ以外の時は全画面になります)
 #ifdef _DEBUG
@@ -39,7 +40,7 @@ bool Application::Initialize()
 	SetUseZBuffer3D(true); // Zバッファを有効化
 	SetWriteZBuffer3D(true); // Zバッファへの書き込みを有効化
 	SetUseLighting(true); // ライトを有効化
-	SetCameraNearFar(1.0f, 10000.0f); // カメラのクリップ距離を設定
+	SetCameraNearFar(CAMERA_NEAR, CAMERA_FAR); // カメラのクリップ距離を設定
 
 	// ここまでくると成功と判断しtrue
 	return true;
