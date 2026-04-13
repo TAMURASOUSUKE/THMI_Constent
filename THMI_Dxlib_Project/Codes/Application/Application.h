@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "../Scene/Bases/SceneManager.h"
 
 // エントリーポイントとゲームループや初期化などを分離し可読性を項上させるクラス
 class Application
@@ -26,5 +27,5 @@ private:
 	void Draw();
 
 private:
-
+	SceneManager sceneManager; // シーンを管理するインスタンス
 };

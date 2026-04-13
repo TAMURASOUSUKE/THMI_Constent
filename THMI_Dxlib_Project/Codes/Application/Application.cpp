@@ -43,6 +43,14 @@ bool Application::Initialize()
 	SetUseLighting(true); // ライトを有効化
 	SetCameraNearFar(CAMERA_NEAR, CAMERA_FAR); // カメラのクリップ距離を設定
 
+#ifdef _DEBUG
+	// デバッグシーンではデバッグ画面選択シーンから
+	sceneManager.SetFirstScene(SceneType::ChooseDebug);
+#else
+	// リリース時はタイトルから
+	sceneManager.SetFirstScene(SceneType::Title);
+#endif // _DEBUG
+
 	// ここまでくると成功と判断しtrue
 	return true;
 }
@@ -59,14 +67,16 @@ void Application::Run()
 
 void Application::Update()
 {
+	// TimeManager実装後はFixedUpadte処理を追加
 
+	sceneManager.Update(); // 各シーンの更新
 }
 
 void Application::Draw()
 {
 	ClearDrawScreen(); // 画面のクリア
 
-	DrawString(0, 0, "描画できてるよ", GetColor(255, 255, 255), GetColor(255, 255, 255));
+	sceneManager.Draw(); // 各シーンの描画
 
 	ScreenFlip(); // 画面のフリップ
 }
