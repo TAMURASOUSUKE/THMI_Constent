@@ -57,6 +57,11 @@ void Application::Run()
 	}
 }
 
+void Application::Update()
+{
+
+}
+
 void Application::Draw()
 {
 	ClearDrawScreen(); // 画面のクリア
