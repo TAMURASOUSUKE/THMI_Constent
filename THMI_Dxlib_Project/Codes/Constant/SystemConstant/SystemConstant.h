@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 // ウィンドウやシステム関連の定数等を作る
 constexpr int WINDOW_WIDTH{ 1920 }; // 画面の横幅
