@@ -1,20 +1,19 @@
 #include "DxLib.h"
+#include "Codes/Application/Application.h"
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
+	Application app{}; // ゲームループを持つクラスのインスタンス
+
+	// falseが返ると初期化に失敗したとみなし-1を返す
+	if (!app.Initialize())
 	{
-		return -1;			// エラーが起きたら直ちに終了
+		return -1;
 	}
 
-	// ゲームループ(仮)
-	while (!ProcessMessage() && !CheckHitKey(KEY_INPUT_ESCAPE))
-	{
-
-	}
-
-	DxLib_End();				// ＤＸライブラリ使用の終了処理
+	// ゲームループの開始
+	app.Run();
 
 	return 0;				// ソフトの終了 
 }
