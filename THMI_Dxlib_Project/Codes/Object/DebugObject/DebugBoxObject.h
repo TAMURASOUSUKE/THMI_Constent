@@ -10,7 +10,7 @@ public:
 	DebugBoxObject() = default; // デフォルトコンストラクタ
 	~DebugBoxObject() = default; // デフォルトデストラクタ
 
-	DebugBoxObject(VECTOR _position, int _handle) :  WorldObjectBase(_position) { isActive = true; } // コンストラクタ
+	DebugBoxObject(VECTOR _position, int _handle) :  WorldObjectBase(_position, _handle) { isActive = true; } // コンストラクタ
 
 	void Update() override; // 更新
 	void Draw() override; // 描画

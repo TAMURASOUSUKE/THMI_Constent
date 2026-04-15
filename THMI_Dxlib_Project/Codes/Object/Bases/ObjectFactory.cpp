@@ -15,9 +15,9 @@ void ObjectFactory::BindManager(ObjectManager& _targetManager)
 }
 
 
-void ObjectFactory::CreateDebugObject(const VECTOR& _position)
+void ObjectFactory::CreateDebugObject(const VECTOR& _position, const int& _handle = -1)
 {
-	std::unique_ptr<WorldObjectBase> obj{ std::make_unique<DebugBoxObject>(_position) };
+	std::unique_ptr<WorldObjectBase> obj{ std::make_unique<DebugBoxObject>(_position, _handle) };
 	targetManager->RegisterWorld(std::move(obj));
 }
 
