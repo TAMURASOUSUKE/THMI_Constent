@@ -61,13 +61,6 @@ enum class VSShaderKind
 	MetaBall, // 水滴などのメタボール制御
 };
 
-// フォントの種類
-enum class FontKind
-{
-	None = -1,
-	Meiryo // メイリオ
-};
-
 // サウンドの種類
 enum class SoundKind
 {
