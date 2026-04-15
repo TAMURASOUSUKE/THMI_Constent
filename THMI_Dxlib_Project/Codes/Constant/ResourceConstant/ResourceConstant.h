@@ -6,11 +6,7 @@
 enum class ResourceUseScene
 {
 	Common, // 汎用
-	Debug, // デバッグシーン
-	TamuraScene, // 田村用
-	Mizushima, // 水島用
-	Hashino, // 橋野用
-	Itou, // 伊藤用
+	Debug, // デバッグシーン(各個人で作成し読み込むのは非効率的と判断しDebugシーンとしてまとめておく)
 	Title, // タイトル
 	Game, // ゲームシーン
 	GameOver, // ゲームオーバー
