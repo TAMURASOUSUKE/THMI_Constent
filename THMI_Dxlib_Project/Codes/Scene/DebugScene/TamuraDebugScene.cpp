@@ -15,9 +15,9 @@ void TamuraDebugScene::Initialize()
 
 	ObjectFactory::BindManager(objManager); // シーンのオブジェクトマネージャーをバインド
 
+	int ruinsHandle = ResourceManager::Instance().GetResourceHandle(Model3DKind::Ruins);
 
-
-	ObjectFactory::CreateDebugObject(VGet(200, 200, 200));
+	ObjectFactory::CreateDebugObject(VGet(200, 200, 200), ResourceManager::Instance().GetResourceHandle(Model3DKind::Ruins)); 
 
 	SetCameraPositionAndTarget_UpVecY(VGet(100.0f, 200.0f, -10.0f), VGet(200.0f, 200.0f, 200.0f));
 
