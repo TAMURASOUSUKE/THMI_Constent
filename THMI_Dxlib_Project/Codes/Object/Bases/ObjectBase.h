@@ -26,8 +26,9 @@ public:
 
 protected:
 	ObjectBase(RenderLayer _layer) : layer{_layer} {} // レイヤーのみを初期化
-	ObjectBase(bool _isActive, RenderLayer _layer) : layer{ _layer } {} // 
-	ObjectBase(bool _isActive, RenderLayer _layer, int _handle) : layer{ _layer }, handle{ _handle } {}
+	ObjectBase(int _handle, RenderLayer _layer) : layer{_layer} {} // ハンドルとレイヤーを設定
+	ObjectBase(bool _isActive, RenderLayer _layer) : layer{ _layer } {} // 生存フラグとレイヤー設定
+	ObjectBase(int _handle, bool _isActive, RenderLayer _layer) : layer{ _layer }, handle{ _handle } {} // ハンドルと生存フラグとレイヤー設定
 
 protected:
 

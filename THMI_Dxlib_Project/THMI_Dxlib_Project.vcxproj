@@ -145,6 +145,8 @@
     <ClCompile Include="Codes\Object\Bases\ObjectFactory.cpp" />
     <ClCompile Include="Codes\Object\Bases\ObjectManager.cpp" />
     <ClCompile Include="Codes\Object\DebugObject\DebugBoxObject.cpp" />
+    <ClCompile Include="Codes\ResourceManagement\ResourceDataBase.cpp" />
+    <ClCompile Include="Codes\ResourceManagement\ResourceManager.cpp" />
     <ClCompile Include="Codes\Scene\Bases\SceneFactory.cpp" />
     <ClCompile Include="Codes\Scene\Bases\SceneManager.cpp" />
     <ClCompile Include="Codes\Scene\DebugScene\ChooseDebugScene.cpp" />
@@ -157,6 +159,8 @@
   <ItemGroup>
     <ClInclude Include="Codes\Application\Application.h" />
     <ClInclude Include="Codes\Constant\GameConstant\GameConstant.h" />
+    <ClInclude Include="Codes\Constant\ResourceConstant\ResourceConstant.h" />
+    <ClInclude Include="Codes\Constant\ResourceConstant\ResourceData.h" />
     <ClInclude Include="Codes\Constant\SceneConstant\SceneConstant.h" />
     <ClInclude Include="Codes\Constant\SystemConstant\SystemConstant.h" />
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVector.h" />
@@ -168,6 +172,8 @@
     <ClInclude Include="Codes\Object\Bases\UIObjectBase.h" />
     <ClInclude Include="Codes\Object\Bases\WorldObjectBase.h" />
     <ClInclude Include="Codes\Object\DebugObject\DebugBoxObject.h" />
+    <ClInclude Include="Codes\ResourceManagement\ResourceDataBase.h" />
+    <ClInclude Include="Codes\ResourceManagement\ResourceManager.h" />
     <ClInclude Include="Codes\Scene\Bases\SceneBase.h" />
     <ClInclude Include="Codes\Scene\Bases\SceneFactory.h" />
     <ClInclude Include="Codes\Scene\Bases\SceneManager.h" />
