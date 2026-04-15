@@ -50,6 +50,18 @@
     <Filter Include="ソース ファイル\Constant\SystemConstant">
       <UniqueIdentifier>{dc672660-815c-44d8-80ca-9f9b37c2f997}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object">
+      <UniqueIdentifier>{da594d97-a2d2-4ba4-af6b-c6c1d75be5e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Bases">
+      <UniqueIdentifier>{e6a8cca9-e17f-4fb2-ab3a-8661574645e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Constant\GameConstant">
+      <UniqueIdentifier>{d28664bd-4da9-473f-8f34-04d174e0b4ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\DebugObject">
+      <UniqueIdentifier>{09635775-7a80-4069-8f30-bf77943ab5d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,6 +96,15 @@
     </ClCompile>
     <ClCompile Include="Codes\Application\Application.cpp">
       <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Object\Bases\ObjectManager.cpp">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Object\Bases\ObjectFactory.cpp">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Object\DebugObject\DebugBoxObject.cpp">
+      <Filter>ソース ファイル\Object\DebugObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +149,27 @@
     </ClInclude>
     <ClInclude Include="Codes\Application\Application.h">
       <Filter>ソース ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\ObjectBase.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\GameConstant\GameConstant.h">
+      <Filter>ソース ファイル\Constant\GameConstant</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\WorldObjectBase.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\UIObjectBase.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\ObjectManager.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\ObjectFactory.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\DebugObject\DebugBoxObject.h">
+      <Filter>ソース ファイル\Object\DebugObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
