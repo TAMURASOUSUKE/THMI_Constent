@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include <unordered_map>
 #include "ResourceConstant/ResourceConstant.h"
 #include "ResourceDataBase.h"
@@ -41,6 +40,13 @@ private:
 	void Load(const VSShaderResourceMap* _vsShaders); // シェーダー読み込み
 	void Load(const SoundResourceMap* _sounds); // サウンド読み込み
 
+	// publicのDelete関数内の可読性を上げるため削除関数を内部で分けて責任分割する
+	void DeleteSingleTexture(ResourceUseScene _useScene); // 指定したシーンでの単体画像削除
+	void DeleteModel(ResourceUseScene _useScene); // 指定したシーンでのモデル削除
+	void DeleteVSShader(ResourceUseScene _useScene); // 指定したシーンでの頂点シェーダー削除
+	void DeletePSShader(ResourceUseScene _useScene); // 指定したシーンでのピクセルシェーダー削除
+	void DeleteSound(ResourceUseScene _useScene); // 指定したシーンでのサウンド削除
+
 	void DeleteAll(); // 全リソース削除
 
 private:
@@ -49,6 +55,7 @@ private:
 	std::unordered_map<Model3DKind, int> modelHandles{}; // 3Dモデル
 	std::unordered_map<PSShaderKind, int> psShaderHandle{};// PSシェーダー
 	std::unordered_map<VSShaderKind, int> vsShaderHandle{};// VSシェーダー
+	std::unordered_map<SoundKind, int> soundHandle{}; // サウンド
 	// ファイル情報
 	ResourceDataBase dataBase{};
 };
