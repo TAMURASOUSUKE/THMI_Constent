@@ -1,10 +1,18 @@
 ﻿#include <Dxlib.h>
+#include "../ResourceManagement/ResourceManager.h"
 #include "../Object/Bases/ObjectFactory.h"
 #include "MizushimaDebugScene.h"
 
 
+MizushimaDebugScene::~MizushimaDebugScene()
+{
+	ResourceManager::Instance().Delete(ResourceUseScene::Debug); // リソースの削除
+}
+
 void MizushimaDebugScene::Initialize()
 {
+	ResourceManager::Instance().Load(ResourceUseScene::Debug); // リソースのロード
+
 	ObjectFactory::BindManager(objManager); // シーンのオブジェクトマネージャーをバインド
 
 	objManager.SortUI(); // UIをソートする

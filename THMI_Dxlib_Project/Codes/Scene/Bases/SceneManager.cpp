@@ -1,9 +1,16 @@
-﻿#include "SceneFactory.h"
+﻿#include "../ResourceManagement/ResourceManager.h"
+#include "SceneFactory.h"
 #include "SceneManager.h"
 
 SceneManager::SceneManager()
 {
 	SceneFactory::Initialize(); // 使用するシーンの登録
+	ResourceManager::Instance().Load(ResourceUseScene::Common); // 汎用リソースを先にLoadする
+}
+
+SceneManager::~SceneManager()
+{
+	ResourceManager::Instance().Delete(ResourceUseScene::Common); // 汎用リソースを削除する
 }
 
 void SceneManager::SetFirstScene(SceneType _type)

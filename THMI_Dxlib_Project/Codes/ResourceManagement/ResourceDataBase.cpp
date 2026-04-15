@@ -96,7 +96,11 @@ void ResourceDataBase::MakeDebugDataBase()
 	// モデル指定
 	ModelResourceMap modelResource
 	{
-		{Model3DKind::Player, {"Res/Model/Player/archer04.mv1"}}
+		{Model3DKind::Player, {"Res/Model/Player/M_001_player_073_01.mv1"}}, // プレイヤー
+		{Model3DKind::Enemy, {"Res/Model/Enemy/M_002_enemy_047_03.mv1"}}, // 敵
+		{Model3DKind::Ruins, {"Res/Model/Ruins/BG_003_iseki_03_01.mv1"}}, // 遺跡
+		{Model3DKind::SkySphere, {"Res/Model/SkySphere/BG_001_tennjyou_01_03.mv1"}}, // 天球
+		{Model3DKind::WaterSurface, {"Res/Model/WaterSurface/BG_002_suimenn_02.mv1"}} // 水面
 	};
 
 	RegisterModelResource(ResourceUseScene::Debug, modelResource);

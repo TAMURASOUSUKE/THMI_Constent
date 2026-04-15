@@ -8,7 +8,7 @@ class HashinoDebugScene : public SceneBase
 {
 public:
 	HashinoDebugScene() = default;
-	~HashinoDebugScene() = default;
+	~HashinoDebugScene();
 
 	// 描画
 	void Draw() override;
