@@ -290,7 +290,7 @@ void ResourceManager::DeletePSShader(ResourceUseScene _useScene)
 }
 
 // サウンド削除
-void ResourceManager::DeletePSShader(ResourceUseScene _useScene)
+void ResourceManager::DeleteSound(ResourceUseScene _useScene)
 {
 	const SoundResourceMap* soundResource{ dataBase.GetSoundResource(_useScene) };
 
