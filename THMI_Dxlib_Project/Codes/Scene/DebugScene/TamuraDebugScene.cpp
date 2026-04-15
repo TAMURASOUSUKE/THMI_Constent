@@ -7,6 +7,13 @@ void TamuraDebugScene::Initialize()
 {
 	ObjectFactory::BindManager(objManager); // シーンのオブジェクトマネージャーをバインド
 
+	ObjectFactory::CreateDebugObject(VGet(200, 200, 200));
+
+	SetCameraPositionAndTarget_UpVecY(
+		VGet(100.0f, 200.0f, -10.0f),
+		VGet(200.0f, 200.0f, 200.0f)
+	);
+
 	objManager.SortUI(); // UIをソートする
 
 	currentStep = SceneStep::Execute; // 実行処理へ
