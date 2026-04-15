@@ -1,10 +1,17 @@
 ﻿#include <Dxlib.h>
+#include "../ResourceManagement/ResourceManager.h"
 #include "../Object/Bases/ObjectFactory.h"
 #include "ItouDebugScene.h"
 
+ItouDebugScene::~ItouDebugScene()
+{
+	ResourceManager::Instance().Delete(ResourceUseScene::Debug); // リソースの削除
+}
 
 void ItouDebugScene::Initialize()
 {
+	ResourceManager::Instance().Load(ResourceUseScene::Debug); // リソースのロード
+
 	ObjectFactory::BindManager(objManager); // シーンのオブジェクトマネージャーをバインド
 
 	objManager.SortUI(); // UIをソートする

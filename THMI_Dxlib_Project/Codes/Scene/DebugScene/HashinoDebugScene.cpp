@@ -1,9 +1,17 @@
 ﻿#include <Dxlib.h>
+#include "../ResourceManagement/ResourceManager.h"
 #include "../Object/Bases/ObjectFactory.h"
 #include "HashinoDebugScene.h"
 
+HashinoDebugScene::~HashinoDebugScene()
+{
+	ResourceManager::Instance().Delete(ResourceUseScene::Debug); // リソースの削除
+}
+
 void HashinoDebugScene::Initialize()
 {
+	ResourceManager::Instance().Load(ResourceUseScene::Debug); // リソースのロード
+
 	ObjectFactory::BindManager(objManager); // シーンのオブジェクトマネージャーをバインド
 
 	objManager.SortUI(); // UIをソートする

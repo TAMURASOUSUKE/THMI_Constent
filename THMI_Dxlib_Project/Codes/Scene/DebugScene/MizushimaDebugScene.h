@@ -8,7 +8,7 @@ class MizushimaDebugScene : public SceneBase
 {
 public:
 	MizushimaDebugScene() = default;
-	~MizushimaDebugScene() = default;
+	~MizushimaDebugScene();
 
 	// 描画
 	void Draw() override;

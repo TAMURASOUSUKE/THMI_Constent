@@ -8,7 +8,7 @@ class ItouDebugScene : public SceneBase
 {
 public:
 	ItouDebugScene() = default;
-	~ItouDebugScene() = default;
+	~ItouDebugScene();
 
 	// 描画
 	void Draw() override;

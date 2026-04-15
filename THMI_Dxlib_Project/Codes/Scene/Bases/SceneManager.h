@@ -9,7 +9,8 @@ class SceneManager
 public:
 	// コンストラクタ
 	SceneManager();
-	~SceneManager() = default;
+	// デストラクタ
+	~SceneManager();
 
 	// 最初のシーンを決定する関数
 	void SetFirstScene(SceneType _type);

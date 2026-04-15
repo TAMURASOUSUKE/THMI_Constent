@@ -17,7 +17,7 @@ public:
 
 
 	// テスト用作成関数
-	static void CreateDebugObject(const VECTOR& _position);
+	static void CreateDebugObject(const VECTOR& _position, const int _handle = -1);
 private:
 	static ObjectManager* targetManager; // どのシーンのオブジェクトマネージャーを使うかをバインドするための変数(参照に使うため生でよい)
 

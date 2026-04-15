@@ -8,7 +8,7 @@ class TamuraDebugScene : public SceneBase
 {
 public:
 	TamuraDebugScene() = default;
-	~TamuraDebugScene() = default;
+	~TamuraDebugScene();
 
 	// 描画
 	void Draw() override;
