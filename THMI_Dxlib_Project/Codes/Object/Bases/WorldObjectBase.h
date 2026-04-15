@@ -17,11 +17,13 @@ public:
 
 	// コンストラクタ群
 	WorldObjectBase(const VECTOR& _position) : position{ _position }, ObjectBase(RenderLayer::World) {}
+	WorldObjectBase(const VECTOR& _position, const int& _handle) : position{ _position }, ObjectBase(_handle, RenderLayer::World) {}
 	WorldObjectBase(const VECTOR& _position, const bool& _isActive) : position{ _position }, ObjectBase(_isActive, RenderLayer::World) {}
+	WorldObjectBase(const VECTOR& _position, const bool& _isActive, const int& _handle) : position{ _position }, ObjectBase(_handle, _isActive, RenderLayer::World) {}
 	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const bool& _isActive) : position{ _position }, rotation{ _rotation }, ObjectBase(_isActive, RenderLayer::World) {}
-	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const bool& _isActive, const int& _handle) : position{ _position }, rotation{ _rotation }, ObjectBase(_isActive, RenderLayer::World) {}
+	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const bool& _isActive, const int& _handle) : position{ _position }, rotation{ _rotation }, ObjectBase(_handle, _isActive, RenderLayer::World) {}
 	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const VECTOR& _scale, const bool& _isActive) : position{ _position }, rotation{ _rotation }, scale{ _scale }, ObjectBase(_isActive, RenderLayer::World) {}
-	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const VECTOR& _scale, const bool& _isActive, const int& _hanlde) : position{ _position }, rotation{ _rotation }, scale{ _scale }, ObjectBase(_isActive, RenderLayer::World, _hanlde) {}
+	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const VECTOR& _scale, const bool& _isActive, const int& _hanlde) : position{ _position }, rotation{ _rotation }, scale{ _scale }, ObjectBase(_hanlde, _isActive, RenderLayer::World) {}
 
 	// 固定更新
 	virtual void FixedUpdate() {}
