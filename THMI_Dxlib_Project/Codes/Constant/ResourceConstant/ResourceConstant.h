@@ -28,31 +28,53 @@ enum class SingleTextureKind
 
 };
 
+// 3Dモデルの種類
 enum class Model3DKind
 {
 	None = -1,
-	Gun, // 銃
-	Ground, // 背景
-	Obstacles, // 壁などのステージ
-	Target, // 的
-	Player, // Player
+	Player, // プレイヤー
+	Enemy, // 敵
+	Ruins, // 遺跡
+	WaterSurface, // 水面
+	SkySphere, // 天球
 };
 
+// ピクセルシェーダーの種類
 enum class PSShaderKind
 {
 	None = -1,
-	Crack, // ひび割れ
+	Toon, // トゥーン調
+	Enemy, // 敵専用
+	GerstnerWave, // 水面の波
+	Depth, // 深度を作る
+	ReflectionClip, // 反射制御
+	ReflectionColor, // 反射色制御
+	MetaBall, // 水滴などのメタボール制御
 };
 
+// 頂点シェーダーの種類
 enum class VSShaderKind
 {
 	None = -1,
-
+	Toon, // トゥーン調
+	Enemy, // 敵専用
+	GerstnerWave, // 水面の波
+	Depth, // 深度を作る
+	ReflectionClip, // 反射制御
+	ReflectionColor, // 反射色制御
+	MetaBall, // 水滴などのメタボール制御
 };
 
+// フォントの種類
 enum class FontKind
 {
 	None = -1,
 	Meiryo // メイリオ
 };
 
+// サウンドの種類
+enum class SoundKind
+{
+	None = -1,
+
+};
