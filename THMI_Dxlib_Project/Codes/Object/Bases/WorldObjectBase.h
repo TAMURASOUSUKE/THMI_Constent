@@ -16,11 +16,12 @@ public:
 
 
 	// コンストラクタ群
-	WorldObjectBase(const VECTOR& position) : position{ position }, ObjectBase(RenderLayer::World) {}
-	WorldObjectBase(const VECTOR& position, const bool& isActive) : position{ position }, ObjectBase(isActive, RenderLayer::World) {}
-	WorldObjectBase(const VECTOR& position, const VECTOR& rotation, const bool& isActive) : position{ position }, rotation{ rotation }, ObjectBase(isActive, RenderLayer::World) {}
-	WorldObjectBase(const VECTOR& position, const VECTOR& rotation, const VECTOR& scale, const bool& isActive) : position{ position }, rotation{ rotation }, scale{ scale }, ObjectBase(isActive, RenderLayer::World) {}
-	WorldObjectBase(const VECTOR& position, const VECTOR& rotation, const VECTOR& scale, const bool& isActive, const int& hanlde) : position{ position }, rotation{ rotation }, scale{ scale }, ObjectBase(isActive, RenderLayer::World, hanlde) {}
+	WorldObjectBase(const VECTOR& _position) : position{ _position }, ObjectBase(RenderLayer::World) {}
+	WorldObjectBase(const VECTOR& _position, const bool& _isActive) : position{ _position }, ObjectBase(_isActive, RenderLayer::World) {}
+	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const bool& _isActive) : position{ _position }, rotation{ _rotation }, ObjectBase(_isActive, RenderLayer::World) {}
+	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const bool& _isActive, const int& _handle) : position{ _position }, rotation{ _rotation }, ObjectBase(_isActive, RenderLayer::World) {}
+	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const VECTOR& _scale, const bool& _isActive) : position{ _position }, rotation{ _rotation }, scale{ _scale }, ObjectBase(_isActive, RenderLayer::World) {}
+	WorldObjectBase(const VECTOR& _position, const VECTOR& _rotation, const VECTOR& _scale, const bool& _isActive, const int& _hanlde) : position{ _position }, rotation{ _rotation }, scale{ _scale }, ObjectBase(_isActive, RenderLayer::World, _hanlde) {}
 
 	// 固定更新
 	virtual void FixedUpdate() {}
