@@ -1,10 +1,11 @@
 #pragma once
 #include <chrono>
+#include "../TimeManagemenet/TimeProvider.h" // Timeクラスに渡すためのプロバイダー
 #include "FrameRateCounter.h"
 #include "FrameRateLimiter.h"
 
 // FPS,DeltaTime,FixedDeltaTimeの管理を行うクラス
-class FrameRateManager
+class FrameRateManager : public TimeProvider
 {
 public:
 	FrameRateManager(int _targetFPS); // 引数に設定したいFPSをとるコンストラクタ
@@ -27,11 +28,10 @@ public:
 	// accumulatorがfixedDeltaTimeを超えているかどうかを返す
 	bool IsFixedUpdateRequired();
 
-	// 現在のFPSを取得する
-	float GetCurrentFPS() const { return currentFPS; }
-
-	// 現在のデルタタイムを取得する
-	float GetDeltaTime() const { return deltaTime; }
+	float GetDeltaTime()      const override { return deltaTime; }
+	float GetFixedDeltaTime() const override { return fixedDeltaTime; }
+	float GetCurrentFPS()     const override { return currentFPS; }
+	float GetAlpha()          const override { return alpha; }
 
 private:
 	// 残り時間が固定ステップの何割かを調べる
