@@ -91,6 +91,13 @@ public:
 	{
 		return _mm_movelh_ps(_vec1, _vec2);
 	}
+
+	// Blend関数(マスクの意味　0 = 第一引数 1 = 第二引数
+	template<int mask>
+	static SIMDVectorFloat Blend(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
+	{
+		return _mm_blend_ps(_vec1, _vec2, mask);
+	}
 };
 
 struct alignas(16) SIMDVectorInt

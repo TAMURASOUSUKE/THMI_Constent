@@ -52,6 +52,9 @@
     <ClCompile Include="Codes\Math\Matrix\Matrix.cpp">
       <Filter>ソース ファイル\Math\Matrix</Filter>
     </ClCompile>
+    <ClCompile Include="Codes\Math\Quaternion\Quaternion.cpp">
+      <Filter>ソース ファイル\Math\Quaternion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h">
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="Codes\Math\Matrix\Matrix.h">
       <Filter>ソース ファイル\Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Math\Quaternion\Quaternion.h">
+      <Filter>ソース ファイル\Math\Quaternion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
