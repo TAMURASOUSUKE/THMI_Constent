@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Codes\Math\Matrix\MatGenerateFunc.cpp" />
     <ClCompile Include="Codes\Math\Matrix\Matrix.cpp" />
+    <ClCompile Include="Codes\Math\Quaternion\Quaternion.cpp" />
     <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp" />
     <ClCompile Include="Codes\Math\Vector\Vector2\Vector2.cpp" />
     <ClCompile Include="Codes\Math\Vector\Vector2\Vector2Int.cpp" />
@@ -148,7 +150,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Codes\Math\Matrix\MatGenerateFunc.h" />
     <ClInclude Include="Codes\Math\Matrix\Matrix.h" />
+    <ClInclude Include="Codes\Math\Quaternion\Quaternion.h" />
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVector.h" />
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h" />
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h" />
