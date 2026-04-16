@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include "SystemConstant/SystemConstant.h"
+#include "../FPSManagemenet/FrameRateManager.h"
 #include "../Scene/Bases/SceneManager.h"
 
 // エントリーポイントとゲームループや初期化などを分離し可読性を項上させるクラス
@@ -27,5 +29,7 @@ private:
 	void Draw();
 
 private:
-	SceneManager sceneManager; // シーンを管理するインスタンス
+	FrameRateManager frameRateManager{USE_FPS}; // FPSを管理するインスタンス(USE_FPSの値を設定FPSとする)
+	SceneManager sceneManager{}; // シーンを管理するインスタンス
+
 };
