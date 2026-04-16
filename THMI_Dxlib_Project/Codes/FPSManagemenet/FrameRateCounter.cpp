@@ -26,4 +26,6 @@ void FrameRateCounter::Update(const time_point<steady_clock>& _currentTime)
 		startTime = _currentTime;
 	}
 
+	frameCounter++;
+
 }
