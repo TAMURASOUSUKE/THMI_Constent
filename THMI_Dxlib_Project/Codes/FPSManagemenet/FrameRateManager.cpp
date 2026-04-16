@@ -1,15 +1,18 @@
 #include <algorithm>
 #include "SystemConstant/SystemConstant.h"
+#include "../Time/Time.h"
 #include "FrameRateManager.h"
 
 FrameRateManager::FrameRateManager(int _currentFPS) : limiter{_currentFPS}
 {
 	fixedDeltaTime = FIXED_DELTA_TIME; // 固定更新用
+	Time::SetProvider(this, this);
 }
 
 FrameRateManager::~FrameRateManager()
 {
-
+	// 終了時にnullにしておく
+	Time::SetProvider(nullptr, nullptr);
 }
 
 // フレームの最初に行う処理
@@ -24,10 +27,11 @@ void FrameRateManager::Begin()
 
 		float rawDeltaTime{ sec.count() }; // 実際のデルタタイム
 
-		deltaTime = std::min(rawDeltaTime, LIMIT_DELTA_TIME); // デルタタイムを計算
+		unscaledDeltaTime = std::min(rawDeltaTime, LIMIT_DELTA_TIME); // デルタタイムを計算(ここではタイムスケールを考慮しない)
+		deltaTime = unscaledDeltaTime * timeScale; // タイムスケールと乗算することで実際のデルタタイムを出す
 	}
 
-	accumulator += deltaTime; // 積算器にdeltaTimeを加算
+	accumulator += deltaTime; // 積算器にdeltaTimeを加算(固定更新用もタイムスケールの影響を受ける)
 
 	if (accumulator > LIMIT_ACCUMULATOR) accumulator = LIMIT_ACCUMULATOR; // 処理落ちした際にあふれるのを防止する
 
@@ -42,6 +46,12 @@ void FrameRateManager::Begin()
 void FrameRateManager::CalculateAlpha()
 {
 	alpha = accumulator / fixedDeltaTime;
+}
+
+// タイムスケールの設定
+void FrameRateManager::SetTimeScale(const float _scale)
+{
+	timeScale = std::max(0.0f, _scale);
 }
 
 // フレームの最後の処理

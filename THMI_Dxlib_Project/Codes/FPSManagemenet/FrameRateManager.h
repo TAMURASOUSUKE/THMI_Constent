@@ -1,11 +1,12 @@
 #pragma once
 #include <chrono>
-#include "../TimeManagemenet/TimeProvider.h" // Timeクラスに渡すためのプロバイダー
+#include "../Time/TimeReader.h" // Timeクラスに渡すためのプロバイダー
+#include "../Time/TimeController.h" // Timeクラスに渡すためのプロバイダー
 #include "FrameRateCounter.h"
 #include "FrameRateLimiter.h"
 
 // FPS,DeltaTime,FixedDeltaTimeの管理を行うクラス
-class FrameRateManager : public TimeProvider
+class FrameRateManager : public ITimeReader, ITimeController
 {
 public:
 	FrameRateManager(int _targetFPS); // 引数に設定したいFPSをとるコンストラクタ
@@ -25,13 +26,21 @@ public:
 	// accumulatorを減らす処理
 	void ConsumeFixedTime();
 
+	// タイムスケールの設定を行う。スケールは負の値にできない(下限値0)
+	void SetTimeScale(const float _scale) override;
+
 	// accumulatorがfixedDeltaTimeを超えているかどうかを返す
 	bool IsFixedUpdateRequired();
 
-	float GetDeltaTime()      const override { return deltaTime; }
-	float GetFixedDeltaTime() const override { return fixedDeltaTime; }
-	float GetCurrentFPS()     const override { return currentFPS; }
-	float GetAlpha()          const override { return alpha; }
+
+	float GetDeltaTime() const override { return deltaTime; } // デルタタイムの取得
+	float GetUnscaledDeltaTime() const override { return unscaledDeltaTime; } // タイムスケールを考慮しないデルタタイムの取得
+	float GetFixedDeltaTime() const override { return fixedDeltaTime; } // 固定更新用デルタタイムの取得
+	float GetCurrentFPS() const override { return currentFPS; } // 現在のFPSを取得
+	float GetAlpha() const override { return alpha; } // 描画を補完するアルファの取得
+	float GetTimeScale() const override { return timeScale; } // タイムスケールの取得
+
+
 
 private:
 	// 残り時間が固定ステップの何割かを調べる
@@ -49,5 +58,8 @@ private:
 	float fixedDeltaTime{ 0.0f }; // 固定更新に使うデルタタイム
 	float accumulator{ 0.0f }; // 固定更新用の蓄積時間
 	float alpha{ 0.0f }; // 残り時間が固定ステップの何割か
+
+	float timeScale{ 1.0f }; // タイムスケール(この値によってスローモーション等をつくれる)
+	float unscaledDeltaTime{ 0.0f }; // タイムスケールを考慮しないデルタタイム
 
 };
