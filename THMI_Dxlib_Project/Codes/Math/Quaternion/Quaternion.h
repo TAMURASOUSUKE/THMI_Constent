@@ -9,23 +9,47 @@ public:
 	{
 		struct
 		{
-			float x, y, z, w;
+			float  x, y, z, w;
 		};
 
 		SIMDVectorFloat simd;
 	};
+public:
+	// コンストラクタ
+	Quaternion() = default;
+
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="_x">虚部1</param>
+	/// <param name="_y">虚部2</param>
+	/// <param name="_z">虚部3</param>
+	/// <param name="_w">実部</param>
+	Quaternion(float _x, float _y, float _z, float _w) :
+		simd(_x, _y, _z, _w)
+	{
+	}
+
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="_simd">SIMD</param>
+	Quaternion(SIMDVectorFloat _simd) :
+		simd{ _simd }
+	{
+	}
 
 	// 単位
 	static Quaternion Identity();
 
-	// 正規化
-	Quaternion& Normalized();
-	// 正規化
+	// 正規化(変化なし)
+	Quaternion Normalized();
+	// 正規化(変化あり)
 	Quaternion& Normalize();
-	// 正規化
-	static Quaternion& Normalized();
-	// 正規化
-	static Quaternion& Normalize();
+	// 正規化(変化なし)
+	static Quaternion Normalized(Quaternion& _rot);
+	// 正規化(変化あり)
+	static Quaternion& Normalize(Quaternion& _rot);
 
 	// 乗法
 	Quaternion operator*(const Quaternion& _value) const;
@@ -34,13 +58,13 @@ public:
 	Quaternion operator*=(const Quaternion& _value);
 
 	// 逆数
-	Vector3 Inverse() const;
+	Quaternion Inverse() const;
 
 	// 共役
 	Quaternion Conjugate()const;
 
 	// 軸と角とで回転
-	static Quaternion AngleAxis(float _angle, Vector3& _axis);
+	static Quaternion AngleAxis(float _rad, const Vector3& _axis);
 	// オイラー角から生成
 	static Quaternion Euler(float _pitch, float _yaw, float _roll);
 	// 行列に変換
@@ -53,7 +77,7 @@ public:
 	/// <param name="_rot2">ゴール</param>
 	/// <param name="_t">時間(0～1)</param>
 	/// <returns></returns>
-	static Quaternion Slerp(const Quaternion& _rot1, const Quaternion _rot2, float _t);
+	static Quaternion Slerp(const Quaternion& _start, const Quaternion _end, float _t);
 
 	/// <summary>
 	/// 線形補間
@@ -62,7 +86,7 @@ public:
 	/// <param name="_rot2">ゴール</param>
 	/// <param name="_t">時間(0～1)</param>
 	/// <returns></returns>
-	static Quaternion Lerp(const Quaternion& _rot1, const Quaternion _rot2, float _t);
+	static Quaternion Lerp(const Quaternion& _start, const Quaternion _end, float _t);
 
 	// 内積
 	float Dot(const Quaternion& _rot1,const Quaternion& _rot2) const;
