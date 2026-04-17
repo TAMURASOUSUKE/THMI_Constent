@@ -65,8 +65,24 @@ public:
 	template<int X,int Y,int Z,int W>
 	static SIMDVectorFloat Shuffle(const SIMDVectorFloat& _value)
 	{
-		return _mm_shuffle_ps(_value, _value, _MM_SHUFFLE(W, Z, Y, X));
+		return _mm_purmute_ps(_value, _MM_SHUFFLE(W, Z, Y, X));
 	}
+
+	/// <summary>
+	/// 値入れ替え
+	/// </summary>
+	/// <typeparam name="X">値1がどこと変わるか</typeparam>
+	/// <typeparam name="Y">値1がどこと変わるか</typeparam>
+	/// <typeparam name="Z">値1がどこと変わるか</typeparam>
+	/// <typeparam name="W">値1がどこと変わるか</typeparam>
+	/// <param name="_value">入れ替える元の値</param>
+	/// <returns>入れ替えられた新しい値</returns>
+	template<int X, int Y, int Z, int W>
+	static SIMDVectorFloat Shuffle(const SIMDVectorFloat& _value1, const SIMDVectorFloat _value2)
+	{
+		return _mm_shuffle_ps(_value1, _value2, _MM_SHUFFLE(W, Z, Y, X));
+	}
+
 
 	// 交互に並べる(上の2つ)
 	static SIMDVectorFloat UnpackHigh(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)

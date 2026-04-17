@@ -126,11 +126,17 @@ SIMDVectorFloat SIMDVectorMath::Negate(const SIMDVectorFloat& _vec)
 }
 
 // 等価
-bool SIMDVectorMath::Equals(const SIMDVectorFloat& a, const SIMDVectorFloat& b)
+bool SIMDVectorMath::Equals(const SIMDVectorFloat& _a, const SIMDVectorFloat& _b)
 {
-	SIMDVectorFloat cmp = _mm_cmpeq_ps(a, b);
+	SIMDVectorFloat cmp = _mm_cmpeq_ps(_a, _b);
 
 	return _mm_movemask_ps(cmp) == 0b1111;
+}
+
+// and演算
+SIMDVectorFloat And(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
+{
+	return _mm_and_ps(_vec1, _vec2);
 }
 
 // 加算

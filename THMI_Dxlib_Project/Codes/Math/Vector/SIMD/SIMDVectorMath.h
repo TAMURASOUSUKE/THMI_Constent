@@ -48,7 +48,10 @@ namespace SIMDVectorMath
 	SIMDVectorFloat Negate(const SIMDVectorFloat& _vec);
 
 	// 等価
-	bool Equals(const SIMDVectorFloat& a, const SIMDVectorFloat& b);
+	bool Equals(const SIMDVectorFloat& _a, const SIMDVectorFloat& _b);
+
+	// and演算
+	SIMDVectorFloat And(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 
 	// ---SIMDVectorIntの演算---
 	// 加算
