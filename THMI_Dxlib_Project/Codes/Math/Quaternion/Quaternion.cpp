@@ -1,5 +1,6 @@
 #include <math.h>
 #include "../Vector/SIMD/SIMDVectorMath.h"
+#include "../Matrix/MatGenerateFunc.h"
 #include "Quaternion.h"
 
 // 単位
@@ -135,9 +136,7 @@ Quaternion Quaternion::Euler(float _pitch, float _yaw, float _roll)
 // 行列に変換
 Matrix4x4 Quaternion::ToMatrix() const
 {
-	// 後から埋めるよ
-	Matrix4x4 m;
-	return m;
+	return MatGenerateFunc::Rotate(*this);
 }
 
 // 球面補間
@@ -178,4 +177,10 @@ Quaternion Lerp(const Quaternion& _start, const Quaternion _end, float _t)
 float Quaternion::Dot(const Quaternion& _rot1, const Quaternion& _rot2) const
 {
 	return SIMDVectorMath::Dot4(_rot1.simd, _rot2.simd);
+}
+
+Quaternion Quaternion::LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up)
+{
+	Matrix4x4 m{ MatGenerateFunc::LookAt(_eye,_target,_up) };
+	return
 }

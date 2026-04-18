@@ -90,4 +90,13 @@ public:
 
 	// 内積
 	float Dot(const Quaternion& _rot1,const Quaternion& _rot2) const;
+
+	/// <summary>
+	/// どこかを見る回転を作る
+	/// </summary>
+	/// <param name="_eye">向けるオブジェクトの位置</param>
+	/// <param name="_target">見る位置</param>
+	/// <param name="_up">上</param>
+	/// <returns></returns>
+	static Quaternion LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up);
 };
