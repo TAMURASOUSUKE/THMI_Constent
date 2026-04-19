@@ -16,7 +16,10 @@ public:
 	};
 public:
 	// コンストラクタ
-	Quaternion() = default;
+	Quaternion() :
+		simd{ 0.0f,0.0f, 0.0f, 1.0f }
+	{
+	}
 
 	/// <summary>
 	/// コンストラクタ
@@ -99,4 +102,7 @@ public:
 	/// <param name="_up">上</param>
 	/// <returns></returns>
 	static Quaternion LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up);
+
+	// 行列から四元数を作る
+	static Quaternion FromMatrix(Matrix4x4 _mat);
 };
