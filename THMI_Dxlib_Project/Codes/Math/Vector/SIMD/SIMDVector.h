@@ -65,7 +65,7 @@ public:
 	template<int X,int Y,int Z,int W>
 	static SIMDVectorFloat Shuffle(const SIMDVectorFloat& _value)
 	{
-		return _mm_purmute_ps(_value, _MM_SHUFFLE(W, Z, Y, X));
+		return _mm_permute_ps(_value, _MM_SHUFFLE(W, Z, Y, X));
 	}
 
 	/// <summary>

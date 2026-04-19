@@ -134,7 +134,7 @@ bool SIMDVectorMath::Equals(const SIMDVectorFloat& _a, const SIMDVectorFloat& _b
 }
 
 // and演算
-SIMDVectorFloat And(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
+SIMDVectorFloat SIMDVectorMath::And(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
 {
 	return _mm_and_ps(_vec1, _vec2);
 }

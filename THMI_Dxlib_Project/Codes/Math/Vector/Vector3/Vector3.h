@@ -21,6 +21,14 @@ public:
 	};
 
 public:
+	// 前(z)
+	static const Vector3 FORWARD;
+	// 右(x)
+	static const Vector3 RIGHT;
+	// 上(y)
+	static const Vector3 UP;
+
+public:
 	// コンストラクタ
 	Vector3() = default;
 

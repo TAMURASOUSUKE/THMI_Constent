@@ -2,6 +2,13 @@
 #include "../SIMD/SIMDVectorMath.h"
 #include "Vector3.h"
 
+// 前(z)
+const Vector3 Vector3::FORWARD{ 0.0f,0.0f,1.0f };
+// 右(x)
+const Vector3 Vector3::RIGHT{ 1.0f,0.0f,0.0f };
+// 上(y)
+const Vector3 Vector3::UP{ 0.0f,1.0f,0.0f };
+
 // 加算
 Vector3 Vector3::operator+(const Vector3& _other) const
 {

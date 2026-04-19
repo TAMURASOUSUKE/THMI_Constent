@@ -47,8 +47,8 @@ public:
     /// </summary>
     /// <param name="point">通る点</param>
     /// <param name="axis">軸</param>
-    /// <param name="angle">角度(度数法)</param>
-    void RotateAround(const Vector3& _point, const Vector3& _axis, float _angle);
+    /// <param name="angle">角度(弧度法)</param>
+    void RotateAround(const Vector3& _point, const Vector3& _axis, float _rad);
     // 四元数を設定
     void SetRotation(const Quaternion& _rot);
     // 引数の位置(ワールド座標)を見る
@@ -66,22 +66,26 @@ public:
     // 引数の位置をローカル座標にする。
     Vector3 InverseTransformPoint(const Vector3& _worldPoint) const;
 
-    // 親設定
-    void SetParent(Transform* _newParent);
+    /// <summary>
+    /// 親設定
+    /// </summary>
+    /// <param name="_parent">親のTransform</param>
+    /// <param name="keepLocal">ローカル行列を維持するか</param>
+    void SetParent(Transform* _parent, bool keepLocal = true);
 
     // 取得系
     // 位置
-    Vector3& GetPosition();
+    Vector3& GetPosition() { return position; }
     // 回転
-    Quaternion& GetRotate();
+    Quaternion& GetRotate() { return rotation; }
     // 大きさ
-    Vector3& GetScale();
+    Vector3& GetScale() { return scale; }
     // ローカル行列
-    Matrix4x4& GetLocalMatrix();
+    Matrix4x4& GetLocalMatrix() { return localMatrix; }
     // ワールド行列
-    Matrix4x4& GetWorldMatrix();
+    Matrix4x4& GetWorldMatrix() { return worldMatrix; }
     // 親
-    Transform& GetParent();
+    Transform* GetParent() { return parent; };
 
 private:
     // ローカル行列更新

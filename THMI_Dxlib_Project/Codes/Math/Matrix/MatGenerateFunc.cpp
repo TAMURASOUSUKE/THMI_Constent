@@ -1,7 +1,6 @@
+#include <bit>
 #include "../Vector/SIMD/SIMDVectorMath.h"
 #include "MatGenerateFunc.h"
-
-#include "DirectXMath.h"
 
 Matrix4x4 MatGenerateFunc::Translate(const Vector3& _vec)
 {
@@ -45,10 +44,10 @@ Matrix4x4 MatGenerateFunc::Rotate(const Quaternion& _rot)
 	elementDiagonal = SIMDVectorMath::Sub(elementDiagonal, v1);
 	// XYZだけ残すようマスク
 	SIMDVectorFloat maskXyz{
-		0xFFFFFFFF,
-		0xFFFFFFFF,
-		0xFFFFFFFF,
-		0x00000000 };
+		std::bit_cast<float>(0xFFFFFFFFu),
+		std::bit_cast<float>(0xFFFFFFFFu),
+		std::bit_cast<float>(0xFFFFFFFFu),
+		std::bit_cast<float>(0x00000000u) };
 
 	// ｗを消す
 	elementDiagonal = SIMDVectorMath::And(elementDiagonal, maskXyz);

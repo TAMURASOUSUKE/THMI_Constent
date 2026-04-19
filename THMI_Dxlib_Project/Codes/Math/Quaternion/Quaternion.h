@@ -45,6 +45,9 @@ public:
 	// 単位
 	static Quaternion Identity();
 
+	// ベクトル回転
+	Vector3 Rotate(const Vector3& _vec) const;
+
 	// 正規化(変化なし)
 	Quaternion Normalized();
 	// 正規化(変化あり)

@@ -58,6 +58,9 @@
     <ClCompile Include="Codes\Math\Matrix\MatGenerateFunc.cpp">
       <Filter>ソース ファイル\Math\Matrix</Filter>
     </ClCompile>
+    <ClCompile Include="Codes\Math\Transform\Transform.cpp">
+      <Filter>ソース ファイル\Math\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h">
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="Codes\Math\Matrix\MatGenerateFunc.h">
       <Filter>ソース ファイル\Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Math\Transform\Transform.h">
+      <Filter>ソース ファイル\Math\Transform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

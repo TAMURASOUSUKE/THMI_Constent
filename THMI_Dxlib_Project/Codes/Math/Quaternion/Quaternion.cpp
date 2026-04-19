@@ -9,6 +9,15 @@ Quaternion Quaternion::Identity()
 	return Quaternion{ 0,0,0,1 };
 }
 
+// ベクトル回転
+Vector3 Quaternion::Rotate(const Vector3& _vec) const
+{
+	// 虚部ベクトル
+	Vector3 qv{ x, y, z };
+	Vector3 t{ Vector3::Cross(qv, _vec) * 2.0f };
+	return _vec + t * w + Vector3::Cross(qv, t);
+}
+
 // 正規化
 Quaternion Quaternion::Normalized()
 {
