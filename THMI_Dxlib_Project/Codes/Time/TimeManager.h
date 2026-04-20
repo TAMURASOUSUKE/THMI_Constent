@@ -1,12 +1,12 @@
-#pragma once
+﻿#pragma once
 #include "TimeReader.h"
 #include "TimeController.h"
 
 // 時間に関する機能を提供する
-class Time
+class TimeManager
 {
 public:
-	Time() = delete; // インスタンスを作ることを禁止する
+	TimeManager() = delete; // インスタンスを作ることを禁止する
 
 	static void SetProvider(const ITimeReader* _readerProvider, ITimeController* _controllerProvider); // プロバイダーの接続を行う
 	static void SetTimeScale(const float _scale); // タイムスケールの設定を行う

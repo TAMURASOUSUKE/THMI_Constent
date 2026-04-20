@@ -1,6 +1,6 @@
 ﻿#pragma once
-
 // ウィンドウやシステム関連の定数等を作る
+
 constexpr int WINDOW_WIDTH{ 1920 }; // 画面の横幅
 constexpr int DEBUG_WINDOW_WIDTH{ 1280 }; // デバッグ用の画面の横幅
 constexpr int WINDOW_HEIGHT{ 1080 }; // 画面の縦幅

@@ -1,4 +1,5 @@
 ﻿#include <Dxlib.h>
+#include "TimeManager.h"
 #include "../ResourceManagement/ResourceManager.h"
 #include "../Object/Bases/ObjectFactory.h"
 #include "TamuraDebugScene.h"
@@ -14,8 +15,6 @@ void TamuraDebugScene::Initialize()
 	ResourceManager::Instance().Load(ResourceUseScene::Debug); // リソースのロード
 
 	ObjectFactory::BindManager(objManager); // シーンのオブジェクトマネージャーをバインド
-
-	int ruinsHandle = ResourceManager::Instance().GetResourceHandle(Model3DKind::Ruins);
 
 	ObjectFactory::CreateDebugObject(VGet(200, 200, 200), ResourceManager::Instance().GetResourceHandle(Model3DKind::Ruins)); 
 
@@ -55,8 +54,42 @@ SceneType TamuraDebugScene::Terminate()
 
 void TamuraDebugScene::Draw()
 {
+	// 描画用処理
 	objManager.Draw();
 
+	DebugDrawStrings(); // 文字列表示
+
+}
+
+void TamuraDebugScene::DebugDrawStrings()
+{
 	// 描画用処理
-	DrawString(0, 0, "ここは田村シーンです", GetColor(255, 255, 255), GetColor(255, 255, 255));
+	DrawString(0, debugStringPos, "ここは田村シーンです", debugWhite, debugRed);
+
+	debugStringPos += debugStringHeight; // 行間
+
+	DrawFormatString(0, debugStringPos, debugWhite, "現在のFPS : %.1f", TimeManager::GetCurrentFPS());
+
+	debugStringPos += debugStringHeight; // 行間
+
+	DrawFormatString(0, debugStringPos, debugWhite, "現在のDeltaTime : %.4f", TimeManager::DeltaTime());
+
+	debugStringPos += debugStringHeight; // 行間
+
+	DrawFormatString(0, debugStringPos, debugWhite, "現在のUnscaledDeltaTime : %.4f", TimeManager::UnscaledDeltaTime());
+
+	debugStringPos += debugStringHeight; // 行間
+
+	DrawFormatString(0, debugStringPos, debugWhite, "現在のFixedDeltaTime : %.4f", TimeManager::FixedDeltaTime());
+
+	debugStringPos += debugStringHeight; // 行間
+
+	DrawFormatString(0, debugStringPos, debugWhite, "現在のAlpha : %.1f", TimeManager::Alpha());
+
+	debugStringPos += debugStringHeight; // 行間
+
+	DrawFormatString(0, debugStringPos, debugWhite, "現在のTimeScale : %f", TimeManager::GetTimeScale());
+
+	debugStringPos = 0;
+
 }

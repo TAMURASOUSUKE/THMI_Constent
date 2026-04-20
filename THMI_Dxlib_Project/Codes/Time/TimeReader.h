@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 // 時間情報の読み取り機能を提供するためのインターフェース
 class ITimeReader

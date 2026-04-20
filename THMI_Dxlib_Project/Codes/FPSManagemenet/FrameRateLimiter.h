@@ -1,7 +1,5 @@
-#pragma once
+﻿#pragma once
 #include <chrono>
-
-using namespace std::chrono; // 変数省略
 
 // 現在の時間を受け取り指定されたFPSになるように調整するクラス
 class FrameRateLimiter
@@ -19,9 +17,9 @@ public:
 	/// 理想の時間とかかった時間を求めその差分だけ待機する
 	/// </summary>
 	/// <param name="_startTime">開始時刻</param>
-	void Wait(time_point<steady_clock> _startTime);
+	void Wait(std::chrono::time_point<std::chrono::steady_clock> _startTime);
 
 private:
-	microseconds targetDuration{}; // 指定された時間をFPSに変換する
+	std::chrono::microseconds targetDuration{}; // 指定された時間をFPSに変換する
 
 };

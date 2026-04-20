@@ -68,6 +68,12 @@
     <Filter Include="ソース ファイル\ResourceManagement">
       <UniqueIdentifier>{4c4d973a-eb96-4873-9d3a-cce977e03407}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\FrameRateManagement">
+      <UniqueIdentifier>{d73dec31-059a-44cb-86e1-a6315f663533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Time">
+      <UniqueIdentifier>{8f197b78-e556-4e8b-ad65-199cd35b7495}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -117,6 +123,18 @@
     </ClCompile>
     <ClCompile Include="Codes\ResourceManagement\ResourceDataBase.cpp">
       <Filter>ソース ファイル\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\FPSManagemenet\FrameRateManager.cpp">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\FPSManagemenet\FrameRateLimiter.cpp">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\FPSManagemenet\FrameRateCounter.cpp">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Time\TimeManager.cpp">
+      <Filter>ソース ファイル\Time</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +212,24 @@
     </ClInclude>
     <ClInclude Include="Codes\ResourceManagement\ResourceDataBase.h">
       <Filter>ソース ファイル\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\FPSManagemenet\FrameRateCounter.h">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\FPSManagemenet\FrameRateLimiter.h">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\FPSManagemenet\FrameRateManager.h">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Time\TimeController.h">
+      <Filter>ソース ファイル\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Time\TimeManager.h">
+      <Filter>ソース ファイル\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Time\TimeReader.h">
+      <Filter>ソース ファイル\Time</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

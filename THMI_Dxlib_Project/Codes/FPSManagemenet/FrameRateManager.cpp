@@ -1,29 +1,29 @@
-#include <algorithm>
+﻿#include <algorithm>
 #include "SystemConstant/SystemConstant.h"
-#include "../Time/Time.h"
+#include "../Time/TimeManager.h"
 #include "FrameRateManager.h"
 
 FrameRateManager::FrameRateManager(int _currentFPS) : limiter{_currentFPS}
 {
 	fixedDeltaTime = FIXED_DELTA_TIME; // 固定更新用
-	Time::SetProvider(this, this);
+	TimeManager::SetProvider(this, this);
 }
 
 FrameRateManager::~FrameRateManager()
 {
 	// 終了時にnullにしておく
-	Time::SetProvider(nullptr, nullptr);
+	TimeManager::SetProvider(nullptr, nullptr);
 }
 
 // フレームの最初に行う処理
 void FrameRateManager::Begin()
 {
-	auto now{ steady_clock::now() }; // 現在の時間取得
+	auto now{ std::chrono::steady_clock::now() }; // 現在の時間取得
 
 	// 2フレーム目以降であればデルタタイム計算を行う
 	if (prevFrameStartTime.time_since_epoch().count() != 0)
 	{
-		duration<float> sec{ now - prevFrameStartTime }; // 一つ前のフレームからの経過時間
+		std::chrono::duration<float> sec{ now - prevFrameStartTime }; // 一つ前のフレームからの経過時間
 
 		float rawDeltaTime{ sec.count() }; // 実際のデルタタイム
 

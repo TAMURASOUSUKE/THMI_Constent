@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <chrono>
 #include "../Time/TimeReader.h" // Timeクラスに渡すためのプロバイダー
 #include "../Time/TimeController.h" // Timeクラスに渡すためのプロバイダー
@@ -6,7 +6,7 @@
 #include "FrameRateLimiter.h"
 
 // FPS,DeltaTime,FixedDeltaTimeの管理を行うクラス
-class FrameRateManager : public ITimeReader, ITimeController
+class FrameRateManager : public ITimeReader, public ITimeController
 {
 public:
 	FrameRateManager(int _targetFPS); // 引数に設定したいFPSをとるコンストラクタ
@@ -47,8 +47,8 @@ private:
 	void CalculateAlpha();
 
 private:
-	time_point<steady_clock> startTime{}; // 待機関数用の開始フレーム
-	time_point<steady_clock> prevFrameStartTime{}; // デルタタイム計測用
+	std::chrono::time_point<std::chrono::steady_clock> startTime{}; // 待機関数用の開始フレーム
+	std::chrono::time_point<std::chrono::steady_clock> prevFrameStartTime{}; // デルタタイム計測用
 
 	FrameRateCounter counter{}; // フレームレートを計測する
 	FrameRateLimiter limiter{ 0 }; // 待機用

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 // 時間に関する設定機能などを提供するインターフェース
 class ITimeController

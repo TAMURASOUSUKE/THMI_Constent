@@ -1,12 +1,15 @@
-#include "Time.h"
+﻿#include "TimeManager.h"
 
-void Time::SetProvider(const ITimeReader* _provider, ITimeController* _controllerProvider)
+const ITimeReader* TimeManager::readerProvider = nullptr;
+ITimeController* TimeManager::controllerProvider = nullptr;
+
+void TimeManager::SetProvider(const ITimeReader* _provider, ITimeController* _controllerProvider)
 {
 	readerProvider = _provider;
 	controllerProvider = _controllerProvider;
 }
 
-void Time::SetTimeScale(const float _scale)
+void TimeManager::SetTimeScale(const float _scale)
 {
 	// 登録されているか確認
 	if (controllerProvider)
@@ -15,38 +18,38 @@ void Time::SetTimeScale(const float _scale)
 	}
 }
 
-float Time::DeltaTime()
+float TimeManager::DeltaTime()
 {
 	// プロバイダーが登録されているかのチェックを入れる
 	return readerProvider ? readerProvider->GetDeltaTime() : 0.0f;
 }
 
-float Time::UnscaledDeltaTime()
+float TimeManager::UnscaledDeltaTime()
 {
 	// プロバイダーが登録されているかのチェックを入れる
 	return readerProvider ? readerProvider->GetUnscaledDeltaTime() : 0.0f;
 }
 
-float Time::FixedDeltaTime()
+float TimeManager::FixedDeltaTime()
 {
 	// プロバイダーが登録されているかのチェックを入れる
 	return readerProvider ? readerProvider->GetFixedDeltaTime() : 0.0f;
 }
 
-float Time::Alpha()
+float TimeManager::Alpha()
 {
 	// プロバイダーが登録されているかのチェックを入れる
 	return readerProvider ? readerProvider->GetAlpha() : 0.0f;
 }
 
 
-float Time::GetCurrentFPS()
+float TimeManager::GetCurrentFPS()
 {
 	// プロバイダーが登録されているかのチェックを入れる
 	return readerProvider ? readerProvider->GetCurrentFPS() : 0.0f;
 }
 
-float Time::GetTimeScale()
+float TimeManager::GetTimeScale()
 {
 	// プロバイダーが登録されているかのチェックを入れる
 	return readerProvider ? readerProvider->GetTimeScale() : 0.0f;
