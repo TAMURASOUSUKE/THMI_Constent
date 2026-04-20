@@ -29,6 +29,54 @@
     <Filter Include="ソース ファイル\Math\Vector\SIMD">
       <UniqueIdentifier>{ac986da4-1212-45ca-8221-38fc85a64235}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Constant">
+      <UniqueIdentifier>{f2f4ecd9-312d-4b08-b09f-2c23fa77beab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Constant\SceneConstant">
+      <UniqueIdentifier>{8dbc5f87-bc00-4468-90e6-6264df801cb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{3c076684-83bd-482c-b2a1-5aa3843e2c78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\Bases">
+      <UniqueIdentifier>{28b93ae5-2911-4d0e-b41d-f556bb47cfe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\DebugScene">
+      <UniqueIdentifier>{ea56655f-939c-490c-91cf-4a334eec6e1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Application">
+      <UniqueIdentifier>{94890f4f-0b7f-4a0c-a788-d799bc4082a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Constant\SystemConstant">
+      <UniqueIdentifier>{dc672660-815c-44d8-80ca-9f9b37c2f997}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object">
+      <UniqueIdentifier>{da594d97-a2d2-4ba4-af6b-c6c1d75be5e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Bases">
+      <UniqueIdentifier>{e6a8cca9-e17f-4fb2-ab3a-8661574645e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Constant\GameConstant">
+      <UniqueIdentifier>{d28664bd-4da9-473f-8f34-04d174e0b4ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\DebugObject">
+      <UniqueIdentifier>{09635775-7a80-4069-8f30-bf77943ab5d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Constant\ResourceConstant">
+      <UniqueIdentifier>{fbbb09e8-cfcf-4d00-952d-e8661dabc3b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ResourceManagement">
+      <UniqueIdentifier>{4c4d973a-eb96-4873-9d3a-cce977e03407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\FrameRateManagement">
+      <UniqueIdentifier>{d73dec31-059a-44cb-86e1-a6315f663533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Time">
+      <UniqueIdentifier>{8f197b78-e556-4e8b-ad65-199cd35b7495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Input">
+      <UniqueIdentifier>{0076ca1f-627d-43b9-a327-640d6ed8a6a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -40,26 +88,59 @@
     <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp">
       <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
     </ClCompile>
-    <ClCompile Include="Codes\Math\Vector\Vector2\Vector2Int.cpp">
-      <Filter>ソース ファイル\Math\Vector\Vector2</Filter>
+    <ClCompile Include="Codes\Scene\Bases\SceneFactory.cpp">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
     </ClCompile>
-    <ClCompile Include="Codes\Math\Vector\Vector3\Vector3.cpp">
-      <Filter>ソース ファイル\Math\Vector\Vector3</Filter>
+    <ClCompile Include="Codes\Scene\Bases\SceneManager.cpp">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
     </ClCompile>
-    <ClCompile Include="Codes\Math\Vector\Vector3\Vector3Int.cpp">
-      <Filter>ソース ファイル\Math\Vector\Vector3</Filter>
+    <ClCompile Include="Codes\Scene\DebugScene\ChooseDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
     </ClCompile>
-    <ClCompile Include="Codes\Math\Matrix\Matrix.cpp">
-      <Filter>ソース ファイル\Math\Matrix</Filter>
+    <ClCompile Include="Codes\Scene\DebugScene\HashinoDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
     </ClCompile>
-    <ClCompile Include="Codes\Math\Quaternion\Quaternion.cpp">
-      <Filter>ソース ファイル\Math\Quaternion</Filter>
+    <ClCompile Include="Codes\Scene\DebugScene\ItouDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
     </ClCompile>
-    <ClCompile Include="Codes\Math\Matrix\MatGenerateFunc.cpp">
-      <Filter>ソース ファイル\Math\Matrix</Filter>
+    <ClCompile Include="Codes\Scene\DebugScene\MizushimaDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
     </ClCompile>
-    <ClCompile Include="Codes\Math\Transform\Transform.cpp">
-      <Filter>ソース ファイル\Math\Transform</Filter>
+    <ClCompile Include="Codes\Scene\DebugScene\TamuraDebugScene.cpp">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Application\Application.cpp">
+      <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Object\Bases\ObjectManager.cpp">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Object\Bases\ObjectFactory.cpp">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Object\DebugObject\DebugBoxObject.cpp">
+      <Filter>ソース ファイル\Object\DebugObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\ResourceManagement\ResourceManager.cpp">
+      <Filter>ソース ファイル\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\ResourceManagement\ResourceDataBase.cpp">
+      <Filter>ソース ファイル\ResourceManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\FPSManagemenet\FrameRateManager.cpp">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\FPSManagemenet\FrameRateLimiter.cpp">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\FPSManagemenet\FrameRateCounter.cpp">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Time\TimeManager.cpp">
+      <Filter>ソース ファイル\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -72,26 +153,95 @@
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h">
       <Filter>ソース ファイル\Math\Vector\SIMD</Filter>
     </ClInclude>
-    <ClInclude Include="Codes\Math\Vector\Vector2\Vector2Int.h">
-      <Filter>ソース ファイル\Math\Vector\Vector2</Filter>
+    <ClInclude Include="Codes\Constant\SceneConstant\SceneConstant.h">
+      <Filter>ソース ファイル\Constant\SceneConstant</Filter>
     </ClInclude>
-    <ClInclude Include="Codes\Math\Vector\Vector3\Vector3.h">
-      <Filter>ソース ファイル\Math\Vector\Vector3</Filter>
+    <ClInclude Include="Codes\Scene\Bases\SceneBase.h">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
     </ClInclude>
-    <ClInclude Include="Codes\Math\Vector\Vector3\Vector3Int.h">
-      <Filter>ソース ファイル\Math\Vector\Vector3</Filter>
+    <ClInclude Include="Codes\Scene\Bases\SceneFactory.h">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
     </ClInclude>
-    <ClInclude Include="Codes\Math\Matrix\Matrix.h">
-      <Filter>ソース ファイル\Math\Matrix</Filter>
+    <ClInclude Include="Codes\Scene\Bases\SceneManager.h">
+      <Filter>ソース ファイル\Scene\Bases</Filter>
     </ClInclude>
-    <ClInclude Include="Codes\Math\Quaternion\Quaternion.h">
-      <Filter>ソース ファイル\Math\Quaternion</Filter>
+    <ClInclude Include="Codes\Scene\DebugScene\ChooseDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
     </ClInclude>
-    <ClInclude Include="Codes\Math\Matrix\MatGenerateFunc.h">
-      <Filter>ソース ファイル\Math\Matrix</Filter>
+    <ClInclude Include="Codes\Scene\DebugScene\HashinoDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
     </ClInclude>
-    <ClInclude Include="Codes\Math\Transform\Transform.h">
-      <Filter>ソース ファイル\Math\Transform</Filter>
+    <ClInclude Include="Codes\Scene\DebugScene\ItouDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\DebugScene\MizushimaDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Scene\DebugScene\TamuraDebugScene.h">
+      <Filter>ソース ファイル\Scene\DebugScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\SystemConstant\SystemConstant.h">
+      <Filter>ソース ファイル\Constant\SystemConstant</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Application\Application.h">
+      <Filter>ソース ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\ObjectBase.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\GameConstant\GameConstant.h">
+      <Filter>ソース ファイル\Constant\GameConstant</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\WorldObjectBase.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\UIObjectBase.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\ObjectManager.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\Bases\ObjectFactory.h">
+      <Filter>ソース ファイル\Object\Bases</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Object\DebugObject\DebugBoxObject.h">
+      <Filter>ソース ファイル\Object\DebugObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\ResourceConstant\ResourceData.h">
+      <Filter>ソース ファイル\Constant\ResourceConstant</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\ResourceConstant\ResourceConstant.h">
+      <Filter>ソース ファイル\Constant\ResourceConstant</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\ResourceManagement\ResourceManager.h">
+      <Filter>ソース ファイル\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\ResourceManagement\ResourceDataBase.h">
+      <Filter>ソース ファイル\ResourceManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\FPSManagemenet\FrameRateCounter.h">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\FPSManagemenet\FrameRateLimiter.h">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\FPSManagemenet\FrameRateManager.h">
+      <Filter>ソース ファイル\FrameRateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Time\TimeController.h">
+      <Filter>ソース ファイル\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Time\TimeManager.h">
+      <Filter>ソース ファイル\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Time\TimeReader.h">
+      <Filter>ソース ファイル\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\GameConstant\GameKey.h">
+      <Filter>ソース ファイル\Constant\GameConstant</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
