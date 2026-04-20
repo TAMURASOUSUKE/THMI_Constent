@@ -74,6 +74,9 @@
     <Filter Include="ソース ファイル\Time">
       <UniqueIdentifier>{8f197b78-e556-4e8b-ad65-199cd35b7495}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Input">
+      <UniqueIdentifier>{0076ca1f-627d-43b9-a327-640d6ed8a6a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -135,6 +138,9 @@
     </ClCompile>
     <ClCompile Include="Codes\Time\TimeManager.cpp">
       <Filter>ソース ファイル\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +236,12 @@
     </ClInclude>
     <ClInclude Include="Codes\Time\TimeReader.h">
       <Filter>ソース ファイル\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\GameConstant\GameKey.h">
+      <Filter>ソース ファイル\Constant\GameConstant</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

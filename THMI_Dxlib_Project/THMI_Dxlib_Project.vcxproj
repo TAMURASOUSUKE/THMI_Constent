@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Tools\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Codes\Constant\;$(ProjectDir)Codes\Time\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Tools\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Codes\Constant\;$(ProjectDir)Codes\Time\;$(ProjectDir)Codes\Math\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -95,7 +95,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Tools\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Codes\Constant\;$(ProjectDir)Codes\Time\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Tools\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Codes\Constant\;$(ProjectDir)Codes\Time\;$(ProjectDir)Codes\Math\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -111,7 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Tools\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Codes\Constant\;$(ProjectDir)Codes\Time\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Tools\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Codes\Constant\;$(ProjectDir)Codes\Time\;$(ProjectDir)Codes\Math\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -129,7 +129,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Tools\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Codes\Constant\;$(ProjectDir)Codes\Time\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Tools\プロジェクトに追加すべきファイル_VC用;$(ProjectDir)Codes\Constant\;$(ProjectDir)Codes\Time\;$(ProjectDir)Codes\Math\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -158,11 +158,13 @@
     <ClCompile Include="Codes\Scene\DebugScene\MizushimaDebugScene.cpp" />
     <ClCompile Include="Codes\Scene\DebugScene\TamuraDebugScene.cpp" />
     <ClCompile Include="Codes\Time\TimeManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Codes\Application\Application.h" />
     <ClInclude Include="Codes\Constant\GameConstant\GameConstant.h" />
+    <ClInclude Include="Codes\Constant\GameConstant\GameKey.h" />
     <ClInclude Include="Codes\Constant\ResourceConstant\ResourceConstant.h" />
     <ClInclude Include="Codes\Constant\ResourceConstant\ResourceData.h" />
     <ClInclude Include="Codes\Constant\SceneConstant\SceneConstant.h" />
@@ -192,6 +194,7 @@
     <ClInclude Include="Codes\Time\TimeManager.h" />
     <ClInclude Include="Codes\Time\TimeController.h" />
     <ClInclude Include="Codes\Time\TimeReader.h" />
+    <ClInclude Include="InputManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
