@@ -57,7 +57,7 @@ void FrameRateManager::SetTimeScale(const float _scale)
 // フレームの最後の処理
 void FrameRateManager::End()
 {
-	limiter.Wait(startTime); // 待機
+	limiter.Wait(); // 待機
 
 	counter.Update(startTime); // 計測
 }

@@ -20,6 +20,9 @@ Application::~Application()
 bool Application::Initialize()
 {
 	// ウィンドウモードの設定(デバッグモードの時はウィンドウモードでそれ以外の時は全画面になります)
+
+	SetWaitVSyncFlag(false); 
+
 #ifdef _DEBUG
 	// デバッグ時の画面サイズの決定
 	SetGraphMode(DEBUG_WINDOW_WIDTH, DEBUG_WINDOW_HEIGHT, COLOR_DEPTH);

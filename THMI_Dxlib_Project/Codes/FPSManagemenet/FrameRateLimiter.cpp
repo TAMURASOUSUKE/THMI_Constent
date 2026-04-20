@@ -10,19 +10,26 @@ FrameRateLimiter::FrameRateLimiter(int _targetFrame)
 	targetDuration = std::chrono::microseconds(static_cast<long long>(ONE_SEC_MICRO / _targetFrame));
 }
 
-void FrameRateLimiter::Wait(std::chrono::time_point<std::chrono::steady_clock> _startTime)
+// プロセスメッセージを考慮した時間(ローリングターゲット方式) : 前フレームでオーバーヘッドがあれば次フレームの待機時間を短くし自動補正する
+void FrameRateLimiter::Wait()
 {
-	auto targetTime{ targetDuration + _startTime }; // 指定FPSの経過時間 + 開始時間 = 目標経過時間
-
 	auto nowTime{ std::chrono::steady_clock::now() }; //　現在の時間
 
-	auto remainingTime{ targetTime - nowTime }; // 理想の経過時間 - 現在の時間 = 差分
-
-	if (remainingTime.count() <= 0) // 目標時間よりも経過時間の方が多かった場合
+	// 初回は目標時刻の設定
+	if (nextFrameTime.time_since_epoch().count() == 0)
 	{
-		// 処理落ち時の処理
+		nextFrameTime = nowTime + targetDuration;
+	}
+
+	// すでに目標時刻を過ぎていたら(処理落ち処理)
+	if (nowTime >= nextFrameTime)
+	{
+		nextFrameTime = nowTime + targetDuration;
 		return;
 	}
+
+
+	auto remainingTime{ nextFrameTime - nowTime }; // 理想の経過時間 - 現在の時間 = 差分
 
 	auto sleepMargin{ std::chrono::milliseconds(1) }; // 1ミリ秒だけ待機時間を短くさせるためのキャッシュ
 
@@ -34,9 +41,11 @@ void FrameRateLimiter::Wait(std::chrono::time_point<std::chrono::steady_clock> _
 	}
 
 	// 目標時刻になるまで空回しさせる
-	while (std::chrono::steady_clock::now() < targetTime)
+	while (std::chrono::steady_clock::now() < nextFrameTime)
 	{
 		_mm_pause(); // ビジーループ対策にCPU最適化処理を入れる
 	}
+
+	nextFrameTime += targetDuration; // 一定間隔で進める
 
 }
