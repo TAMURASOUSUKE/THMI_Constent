@@ -20,6 +20,9 @@ Application::~Application()
 bool Application::Initialize()
 {
 	// ウィンドウモードの設定(デバッグモードの時はウィンドウモードでそれ以外の時は全画面になります)
+
+	SetWaitVSyncFlag(false); 
+
 #ifdef _DEBUG
 	// デバッグ時の画面サイズの決定
 	SetGraphMode(DEBUG_WINDOW_WIDTH, DEBUG_WINDOW_HEIGHT, COLOR_DEPTH);
@@ -60,14 +63,24 @@ void Application::Run()
 	// ゲームループを実装(プロセスメッセージが失敗するかESCが押されるまでループ)
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
+		frameRateManager.Begin(); // フレームの最初の処理
+
 		Update(); // 更新処理
 		Draw(); // 描画処理
+
+		frameRateManager.End(); // フレームの最後の処理
 	}
 }
 
 void Application::Update()
 {
-	// TimeManager実装後はFixedUpadte処理を追加
+	// FixedUpdate更新
+	while (frameRateManager.IsFixedUpdateRequired())
+	{
+		sceneManager.FixedUpdate(); // 固定更新
+
+		frameRateManager.ConsumeFixedTime(); // 固定更新に合わせた計測
+	}
 
 	sceneManager.Update(); // 各シーンの更新
 }
