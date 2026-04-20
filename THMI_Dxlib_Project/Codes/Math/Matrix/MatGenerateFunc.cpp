@@ -155,9 +155,19 @@ Matrix4x4 MatGenerateFunc::RotateZ(float _rad)
 	};
 }
 
-Matrix4x4 MatGenerateFunc::TRS(const Vector3& _vec, const Quaternion& _rot, const Vector3& _scale)
+Matrix4x4 MatGenerateFunc::TRS(const Vector3& _pos, const Quaternion& _rot, const Vector3& _scale)
 {
-	return Translate(_vec) * Rotate(_rot) * Scale(_scale);
+	return Translate(_pos) * Rotate(_rot) * Scale(_scale);
+}
+
+Matrix4x4 MatGenerateFunc::InverseTRS(const Vector3& _pos, const Quaternion& _rot, const Vector3& _scale)
+{
+	Vector3 invScale = SIMDVectorMath::Reciprocal(_scale);
+	Quaternion invRot = _rot.Conjugate();
+
+	Vector3 invPos = invRot.Rotate(-Vector3{ SIMDVectorMath::Mul(_pos, invScale) });
+
+	return MatGenerateFunc::TRS(invPos, invRot, invScale);
 }
 
 Matrix4x4 MatGenerateFunc::LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up)

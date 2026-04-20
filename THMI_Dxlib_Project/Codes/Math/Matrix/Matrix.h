@@ -58,7 +58,7 @@ public:
 	}
 
 	// 単位行列
-	Matrix4x4 Identity();
+	static Matrix4x4 Identity();
 
 	// 加算
 	Matrix4x4 operator+(const Matrix4x4& _other)const;

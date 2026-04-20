@@ -69,7 +69,7 @@ void Transform::RotateEuler(const Vector3& _euler)
 /// <param name="angle">角度(弧度法)</param>
 void Transform::RotateAround(const Vector3& _point, const Vector3& _axis, float _rad)
 {
-	Quaternion q = Quaternion::AngleAxis(_rad,Vector3::Normalized(_axis));
+	Quaternion q = Quaternion::AngleAxis(_rad, Vector3::Normalized(_axis));
 
 	// 位置を回す
 	Vector3 offset = position - _point;
@@ -132,7 +132,7 @@ Vector3 Transform::InverseTransformPoint(const Vector3& _worldPoint) const
 
 		Vector3 v = p - position;
 		v = rotation.Conjugate().Rotate(v);
-		v = SIMDVectorMath::Div(v,scale);
+		v = SIMDVectorMath::Div(v, scale);
 		return v;
 	}
 	else
@@ -153,12 +153,49 @@ void Transform::SetParent(Transform* _parent, bool keepLocal)
 	}
 	else
 	{
+		// 今のワールドを保存
+		Matrix4x4 world = worldMatrix;
 
+		parent = _parent;
+
+		Matrix4x4 invParent;
+		if (parent)
+		{
+			// 逆行列を生成
+			invParent = MatGenerateFunc::InverseTRS(parent->GetPosition(), parent->GetRotate(), parent->GetScale());
+		}
+		else
+		{
+			// 親がないなら単位行列
+			invParent = Matrix4x4::Identity();
+		}
+			
+		// ローカルを作り直す
+		localMatrix = invParent * world;
+
+		// TRSに分解
+		Transform::DecomposeTRS(localMatrix, position, rotation, scale);
 	}
 
+	// ワールド更新
+	UpdateWorldMatrix();
+}
 
-	// 行列更新
-	UpdateLocalMatrix();
+// TRSに分解する関数
+void Transform::DecomposeTRS(Matrix4x4& _mat, Vector3& _pos, Quaternion _rot, Vector3& _scale)
+{
+	// 位置
+	_pos = Vector3{ _mat.m[0][3],_mat.m[1][3],_mat.m[2][3] };
+
+	// 四元数
+	_rot = Quaternion::FromMatrix(_mat);
+
+	float sx{ Vector3{_mat.m[0][0],_mat.m[1][0],_mat.m[2][0]}.Length() };
+	float sy{ Vector3{_mat.m[0][1],_mat.m[1][1],_mat.m[2][1]}.Length() };
+	float sz{ Vector3{_mat.m[0][2],_mat.m[1][2],_mat.m[2][2]}.Length() };
+
+	// スケール
+	_scale = Vector3{ sx,sy,sz };
 }
 
 // ローカル行列更新

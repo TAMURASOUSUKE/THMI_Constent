@@ -87,6 +87,15 @@ public:
     // 親
     Transform* GetParent() { return parent; };
 
+    /// <summary>
+    /// TRSに分解する関数
+    /// </summary>
+    /// <param name="_mat">元の行列</param>
+    /// <param name="_pos">位置を入れる変数</param>
+    /// <param name="_rot">四元数を入れる変数</param>
+    /// <param name="_scale">大きさを入れる変数</param>
+    static void DecomposeTRS(Matrix4x4& _mat, Vector3& _pos, Quaternion _rot, Vector3& _scale);
+
 private:
     // ローカル行列更新
     void UpdateLocalMatrix();
