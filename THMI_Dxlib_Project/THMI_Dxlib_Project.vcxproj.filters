@@ -139,7 +139,7 @@
     <ClCompile Include="Codes\Time\TimeManager.cpp">
       <Filter>ソース ファイル\Time</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp">
+    <ClCompile Include="Codes\Input\InputManager.cpp">
       <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
   </ItemGroup>
@@ -237,11 +237,11 @@
     <ClInclude Include="Codes\Time\TimeReader.h">
       <Filter>ソース ファイル\Time</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>ソース ファイル\Input</Filter>
-    </ClInclude>
     <ClInclude Include="Codes\Constant\GameConstant\GameKey.h">
       <Filter>ソース ファイル\Constant\GameConstant</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Input\InputManager.h">
+      <Filter>ソース ファイル\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

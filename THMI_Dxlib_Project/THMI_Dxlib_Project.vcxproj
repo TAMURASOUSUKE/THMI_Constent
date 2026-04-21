@@ -143,6 +143,7 @@
     <ClCompile Include="Codes\FPSManagemenet\FrameRateCounter.cpp" />
     <ClCompile Include="Codes\FPSManagemenet\FrameRateLimiter.cpp" />
     <ClCompile Include="Codes\FPSManagemenet\FrameRateManager.cpp" />
+    <ClCompile Include="Codes\Input\InputManager.cpp" />
     <ClCompile Include="Codes\Math\Vector\SIMD\SIMDVectorMath.cpp" />
     <ClCompile Include="Codes\Math\Vector\Vector2\Vector2.cpp" />
     <ClCompile Include="Codes\Object\Bases\ObjectFactory.cpp" />
@@ -158,7 +159,6 @@
     <ClCompile Include="Codes\Scene\DebugScene\MizushimaDebugScene.cpp" />
     <ClCompile Include="Codes\Scene\DebugScene\TamuraDebugScene.cpp" />
     <ClCompile Include="Codes\Time\TimeManager.cpp" />
-    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +172,7 @@
     <ClInclude Include="Codes\FPSManagemenet\FrameRateCounter.h" />
     <ClInclude Include="Codes\FPSManagemenet\FrameRateLimiter.h" />
     <ClInclude Include="Codes\FPSManagemenet\FrameRateManager.h" />
+    <ClInclude Include="Codes\Input\InputManager.h" />
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVector.h" />
     <ClInclude Include="Codes\Math\Vector\SIMD\SIMDVectorMath.h" />
     <ClInclude Include="Codes\Math\Vector\Vector2\Vector2.h" />
@@ -194,7 +195,6 @@
     <ClInclude Include="Codes\Time\TimeManager.h" />
     <ClInclude Include="Codes\Time\TimeController.h" />
     <ClInclude Include="Codes\Time\TimeReader.h" />
-    <ClInclude Include="InputManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
