@@ -18,9 +18,19 @@ public:
 		// SIMD計算用
 		SIMDVectorInt simd;
 	};
+
+public:
+	static const Vector2Int ZERO;
+	static const Vector2Int ONE;
+	static const Vector2Int UP;
+	static const Vector2Int RIGHT;
+
 public:
 	// コンストラクタ
-	Vector2Int() = default;
+	Vector2Int() :
+		simd(0, 0, 0, 0)
+	{
+	}
 
 	/// <param name="simd">SIMD</param>
 	Vector2Int(SIMDVectorInt simd) :
@@ -46,14 +56,14 @@ public:
 	// 減算
 	Vector2Int operator-(const Vector2Int& _other)const;
 	// 乗算
-	Vector2Int operator*(float _value)const;
+	Vector2Int operator*(int _value)const;
 
 	// 加算
 	Vector2Int& operator+=(const Vector2Int& _other);
 	// 減算
 	Vector2Int& operator-=(const Vector2Int& _other);
 	// 乗算
-	Vector2Int& operator*=(float _value);
+	Vector2Int& operator*=(int _value);
 
 	// 等価
 	bool operator==(const Vector2Int& _other) const;

@@ -20,8 +20,17 @@ public:
 	};
 
 public:
+	static const Vector2 ZERO;
+	static const Vector2 ONE;
+	static const Vector2 UP;
+	static const Vector2 RIGHT;
+
+public:
 	// コンストラクタ
-	Vector2() = default;
+	Vector2() :
+		simd{ 0.0f,0.0f,0.0f,0.0f }
+	{
+	}
 
 	/// <param name="simd">SIMD</param>
 	Vector2(SIMDVectorFloat simd) :
@@ -32,7 +41,7 @@ public:
 	/// <param name="_x">X</param>
 	/// <param name="_y">Y</param>
 	Vector2(float _x, float _y) :
-		simd(_x,_y,0,0)
+		simd(_x,_y,0.0f,0.0f)
 	{}
 
 	// 型変換

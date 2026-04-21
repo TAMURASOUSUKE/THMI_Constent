@@ -90,7 +90,7 @@ float SIMDVectorMath::Length3(const SIMDVectorFloat& _vec)
 // 正規化
 SIMDVectorFloat SIMDVectorMath::Normalize(const SIMDVectorFloat& _vec)
 {
-	SIMDVectorFloat rsqrt{ RSqrt(_vec) };
+	SIMDVectorFloat rsqrt{ RSqrt(Dot4(_vec,_vec)) };
 	
 	return Mul(_vec, rsqrt);
 }
@@ -137,6 +137,15 @@ bool SIMDVectorMath::Equals(const SIMDVectorFloat& _a, const SIMDVectorFloat& _b
 SIMDVectorFloat SIMDVectorMath::And(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2)
 {
 	return _mm_and_ps(_vec1, _vec2);
+}
+
+// 横足し算
+float SIMDVectorMath::HorizontalAdd(const SIMDVectorFloat& _vec)
+{
+	SIMDVectorFloat tmp = _mm_hadd_ps(_vec, _vec);
+	tmp = _mm_hadd_ps(tmp, tmp);
+
+	return _mm_cvtss_f32(tmp);
 }
 
 // 加算

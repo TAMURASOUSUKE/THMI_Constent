@@ -179,6 +179,7 @@
     <ClInclude Include="Codes\FPSManagemenet\FrameRateCounter.h" />
     <ClInclude Include="Codes\FPSManagemenet\FrameRateLimiter.h" />
     <ClInclude Include="Codes\FPSManagemenet\FrameRateManager.h" />
+    <ClInclude Include="Codes\Math\MDMath.h" />
     <ClInclude Include="Codes\Math\Matrix\MatGenerateFunc.h" />
     <ClInclude Include="Codes\Math\Matrix\Matrix.h" />
     <ClInclude Include="Codes\Math\Quaternion\Quaternion.h" />

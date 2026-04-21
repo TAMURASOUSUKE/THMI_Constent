@@ -53,6 +53,9 @@ namespace SIMDVectorMath
 	// and演算
 	SIMDVectorFloat And(const SIMDVectorFloat& _vec1, const SIMDVectorFloat& _vec2);
 
+	// 横足し算
+	float HorizontalAdd(const SIMDVectorFloat& _vec);
+
 	// ---SIMDVectorIntの演算---
 	// 加算
 	SIMDVectorInt Add(const SIMDVectorInt& _vec1, const SIMDVectorInt& _vec2);

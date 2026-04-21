@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Dxlib.h>
 #include "../Vector/Vector3/Vector3.h"
 
 struct alignas(16) Matrix4x4
@@ -55,6 +56,34 @@ public:
 		row[1] = SIMDVectorFloat{ _m10,_m11,_m12,_m13 };
 		row[2] = SIMDVectorFloat{ _m20,_m21,_m22,_m23 };
 		row[3] = SIMDVectorFloat{ _m30,_m31,_m32,_m33 };
+	}
+
+	// 暗黙変換
+	operator MATRIX() const
+	{
+		MATRIX r{};
+
+		r.m[0][0] = m[0][0];
+		r.m[0][1] = m[0][1];
+		r.m[0][2] = m[0][2];
+		r.m[0][3] = m[0][3];
+
+		r.m[1][0] = m[1][0];
+		r.m[1][1] = m[1][1];
+		r.m[1][2] = m[1][2];
+		r.m[1][3] = m[1][3];
+
+		r.m[2][0] = m[2][0];
+		r.m[2][1] = m[2][1];
+		r.m[2][2] = m[2][2];
+		r.m[2][3] = m[2][3];
+
+		r.m[3][0] = m[3][0];
+		r.m[3][1] = m[3][1];
+		r.m[3][2] = m[3][2];
+		r.m[3][3] = m[3][3];
+
+		return r;
 	}
 
 	// 単位行列

@@ -1,6 +1,11 @@
 #include "../SIMD/SIMDVectorMath.h"
 #include "Vector2Int.h"
 
+const Vector2Int Vector2Int::ZERO{ 0,0 };
+const Vector2Int Vector2Int::ONE{ 1,1 };
+const Vector2Int Vector2Int::UP{ 0,1 };
+const Vector2Int Vector2Int::RIGHT{ 1,0 };
+
 // 加算
 Vector2Int Vector2Int::operator+(const Vector2Int& _other) const
 {
@@ -14,7 +19,7 @@ Vector2Int Vector2Int::operator-(const Vector2Int& _other)const
 }
 
 // 乗算
-Vector2Int Vector2Int::operator*(float _value)const
+Vector2Int Vector2Int::operator*(int _value)const
 {
 	return SIMDVectorMath::MulScalar(simd, _value);
 }
@@ -34,7 +39,7 @@ Vector2Int& Vector2Int::operator-=(const Vector2Int& _other)
 }
 
 // 乗算
-Vector2Int& Vector2Int::operator*=(float _value)
+Vector2Int& Vector2Int::operator*=(int _value)
 {
 	simd = SIMDVectorMath::MulScalar(simd, _value);
 	return *this;

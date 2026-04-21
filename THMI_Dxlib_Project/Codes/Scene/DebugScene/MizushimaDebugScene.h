@@ -23,4 +23,6 @@ private:
 
 private:
 	ObjectManager objManager{}; // オブジェクト管理用
+
+	int handle;
 };

@@ -116,7 +116,7 @@ Matrix4x4 MatGenerateFunc::Rotate(const Quaternion& _rot)
 Matrix4x4 MatGenerateFunc::RotateX(float _rad)
 {
 	float c{ cosf(_rad) };
-	float s{ cosf(_rad) };
+	float s{ sinf(_rad) };
 
 	return
 	{
@@ -130,7 +130,7 @@ Matrix4x4 MatGenerateFunc::RotateX(float _rad)
 Matrix4x4 MatGenerateFunc::RotateY(float _rad)
 {
 	float c{ cosf(_rad) };
-	float s{ cosf(_rad) };
+	float s{ sinf(_rad) };
 
 	return
 	{
@@ -144,7 +144,7 @@ Matrix4x4 MatGenerateFunc::RotateY(float _rad)
 Matrix4x4 MatGenerateFunc::RotateZ(float _rad)
 {
 	float c{ cosf(_rad) };
-	float s{ cosf(_rad) };
+	float s{ sinf(_rad) };
 
 	return
 	{

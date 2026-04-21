@@ -3,6 +3,8 @@
 #include "../Object/Bases/ObjectFactory.h"
 #include "MizushimaDebugScene.h"
 
+#include "MDMath.h"
+
 
 MizushimaDebugScene::~MizushimaDebugScene()
 {
@@ -16,6 +18,11 @@ void MizushimaDebugScene::Initialize()
 	ObjectFactory::BindManager(objManager); // シーンのオブジェクトマネージャーをバインド
 
 	objManager.SortUI(); // UIをソートする
+
+	SetCameraPositionAndTarget_UpVecY(VGet(100.0f, 200.0f, -10.0f), VGet(200.0f, 200.0f, 200.0f));
+
+	// モデルハンドル
+	handle = ResourceManager::Instance().GetResourceHandle(Model3DKind::Player);
 
 	currentStep = SceneStep::Execute; // 実行処理へ
 }
@@ -50,4 +57,7 @@ void MizushimaDebugScene::Draw()
 
 	// 描画用処理
 	DrawString(0, 0, "ここは水島シーンです", GetColor(255, 255, 255), GetColor(255, 255, 255));
+
+
+	MV1DrawModel(handle);
 }

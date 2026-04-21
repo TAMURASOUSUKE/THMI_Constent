@@ -46,7 +46,10 @@ Matrix4x4 Matrix4x4::operator*(const Matrix4x4& _other)const
 	Matrix4x4 tm{ _other.Transposed() };
 	for (int i{ 0 }; i < 4; i++)
 	{
-		m.row[i] = SIMDVectorMath::Mul(row[i], tm.row[i]);
+		for (int j{ 0 }; j < 4; j++)
+		{
+			m.m[i][j] = SIMDVectorMath::HorizontalAdd(SIMDVectorMath::Mul(row[i], tm.row[j]));
+		}
 	}
 
 	return m;
@@ -80,7 +83,10 @@ Matrix4x4& Matrix4x4::operator*=(const Matrix4x4& _other)
 	Matrix4x4 tm{ _other.Transposed() };
 	for (int i{ 0 }; i < 4; i++)
 	{
-		row[i] = SIMDVectorMath::Mul(row[i], tm.row[i]);
+		for (int j{ 0 }; j < 4; j++)
+		{
+			m[i][j] = SIMDVectorMath::HorizontalAdd(SIMDVectorMath::Mul(row[i], tm.row[j]));
+		}
 	}
 
 	return *this;
