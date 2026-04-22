@@ -19,10 +19,10 @@ void MizushimaDebugScene::Initialize()
 
 	objManager.SortUI(); // UIをソートする
 
-	SetCameraPositionAndTarget_UpVecY(VGet(100.0f, 200.0f, -10.0f), VGet(200.0f, 200.0f, 200.0f));
-
 	// モデルハンドル
 	handle = ResourceManager::Instance().GetResourceHandle(Model3DKind::Player);
+
+	SetCameraPositionAndTarget_UpVecY(Vector3{ MV1GetPosition(handle) } - Vector3{ 0,100,100.0f }, MV1GetPosition(handle));
 
 	currentStep = SceneStep::Execute; // 実行処理へ
 }
@@ -59,5 +59,4 @@ void MizushimaDebugScene::Draw()
 	DrawString(0, 0, "ここは水島シーンです", GetColor(255, 255, 255), GetColor(255, 255, 255));
 
 
-	MV1DrawModel(handle);
 }

@@ -190,8 +190,7 @@ float Quaternion::Dot(const Quaternion& _rot1, const Quaternion& _rot2) const
 
 Quaternion Quaternion::LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up)
 {
-	Matrix4x4 m{ MatGenerateFunc::LookAt(_eye,_target,_up) };
-	return FromMatrix(m);
+	return FromMatrix(MatGenerateFunc::LookAt(_eye, _target, _up));
 }
 
 // 行列から四元数を作る
@@ -205,31 +204,43 @@ Quaternion Quaternion::FromMatrix(Matrix4x4 _mat)
 	{
 		float s = sqrtf(trace + 1.0f) * 2.0f; // s = 4 * w
 		q.w = 0.25f * s;
-		q.x = (_mat.m[2][1] - _mat.m[1][2]) / s;
-		q.y = (_mat.m[0][2] - _mat.m[2][0]) / s;
-		q.z = (_mat.m[1][0] - _mat.m[0][1]) / s;
+		// (2yz + 2xw) - (2yz - 2xw) = 4wx
+		q.x = (_mat.m[1][2] - _mat.m[2][1]) / s;
+		// (2xz + 2yw) - (2xz - 2yw) = 4wy
+		q.y = (_mat.m[2][0] - _mat.m[0][2]) / s;
+		// (2xy + 2zw) - (2xy - 2zx) = 4wz
+		q.z = (_mat.m[0][1] - _mat.m[1][0]) / s;
 	}
 	else if (_mat.m[0][0] > _mat.m[1][1] && _mat.m[0][0] > _mat.m[2][2])
 	{
 		float s = sqrtf(1.0f + _mat.m[0][0] - _mat.m[1][1] - _mat.m[2][2]) * 2.0f; // s = 4 * x
-		q.w = (_mat.m[2][1] - _mat.m[1][2]) / s;
+		// (2yz + 2xw) - (2yz - 2xw) = 4wx
+		q.w = (_mat.m[1][2] - _mat.m[2][1]) / s;
 		q.x = 0.25f * s;
+		// (2xy + 2zw) + (2xy - 2 zw) = 4xy
 		q.y = (_mat.m[0][1] + _mat.m[1][0]) / s;
+		// (2xz + 2wy) + (2xz - 2wy) = 4xz
 		q.z = (_mat.m[0][2] + _mat.m[2][0]) / s;
 	}
 	else if (_mat.m[1][1] > _mat.m[2][2])
 	{
 		float s = sqrtf(1.0f + _mat.m[1][1] - _mat.m[0][0] - _mat.m[2][2]) * 2.0f; // s = 4 * y
-		q.w = (_mat.m[0][2] - _mat.m[2][0]) / s;
+		// (2xz + 2yw) - (2xz - 2yw) = 4wy
+		q.w = (_mat.m[2][0] - _mat.m[0][2]) / s;
+		// (2xy + 2wz) + (2xy - 2wz) = 4yx
 		q.x = (_mat.m[0][1] + _mat.m[1][0]) / s;
 		q.y = 0.25f * s;
+		// (2yz + 2wx) + (2yz - 2wx) = 4zy
 		q.z = (_mat.m[1][2] + _mat.m[2][1]) / s;
 	}
 	else
 	{
 		float s = sqrtf(1.0f + _mat.m[2][2] - _mat.m[0][0] - _mat.m[1][1]) * 2.0f; // s = 4 * z
-		q.w = (_mat.m[1][0] - _mat.m[0][1]) / s;
+		// (2xy + 2zw) - (2xy - 2zx) = 4zw
+		q.w = (_mat.m[0][1] - _mat.m[1][0]) / s;
+		// (2xz - 2yw) + (2xz + 2yw) = 4zx
 		q.x = (_mat.m[0][2] + _mat.m[2][0]) / s;
+		// (2yz + 2xw) + (2yz - 2xw) = 4zy
 		q.y = (_mat.m[1][2] + _mat.m[2][1]) / s;
 		q.z = 0.25f * s;
 	}

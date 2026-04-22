@@ -77,38 +77,38 @@ Matrix4x4 MatGenerateFunc::Rotate(const Quaternion& _rot)
 	SIMDVectorFloat elementSub{ SIMDVectorMath::Sub(termXyz,termW) };
 
 	// ±でまとめる
-	// 2xy + 2zw, 2xz + 2yw, 2xy - 2zw, 2yz - 2xw
-	v0 = SIMDVectorFloat::Shuffle<0, 1, 0, 2>(elementAdd, elementSub);
+	// 2xy + 2zw, 2yz + 2xw, 2xy - 2zw, 2xz - 2yw
+	v0 = SIMDVectorFloat::Shuffle<0, 2, 0, 1>(elementAdd, elementSub);
 
-	// 2yz + 2xw, 2xy + 2zw, 2xz - 2yw, 2xy - 2zw
-	v1 = SIMDVectorFloat::Shuffle<2, 0, 1, 0>(elementAdd, elementSub);
+	// 2xz + 2yw, 2xy + 2zw, 2yz - 2xw, 2xy - 2zw
+	v1 = SIMDVectorFloat::Shuffle<1, 0, 2, 0>(elementAdd, elementSub);
 	
 	// 行ごとに要素を構築
 	Matrix4x4 m;
 
-	// 一行目(1 - 2y^2 - 2z^2, 2xy - 2wz, 2xz + 2wy)
-	//  計算結果から値を抽出(1 - 2y^2 - 2x^2, 0, 2xy - 2zw, 2xz + 2yw)
-	m.row[0] = SIMDVectorFloat::Shuffle<0, 3, 3, 1>(elementDiagonal, v0);
+	// 一行目(1 - 2y^2 - 2z^2, 2xy + 2zw, 2xz - 2yw)
+	//  計算結果から値を抽出(1 - 2y^2 - 2x^2, 0, 2xy + 2zw, 2xz - 2yw)
+	m.row[0] = SIMDVectorFloat::Shuffle<0, 3, 0, 3>(elementDiagonal, v0);
 
-	// 整列(1 - 2y^2 - 2z^2, 2xy - 2wz, 2xz + 2wy)
+	// 整列(1 - 2y^2 - 2z^2, 2xy + 2wz, 2xz - 2yw)
 	m.row[0] = SIMDVectorFloat::Shuffle<0, 2, 3, 1>(m.row[0]);
 
-	// 二行目(2xy + 2zw, 1 - 2x^2 - 2z^2, 2yz - 2xw)
-	// 計算結果から値を抽出(1 - 2x^2 - 2z^2, 0, 2xy + 2zw, 2yz - 2xw)
-	m.row[1] = SIMDVectorFloat::Shuffle<1, 3, 0, 3>(elementDiagonal, v0);
+	// 二行目(2xy - 2zw, 1 - 2x^2 - 2z^2, 2yz + 2xw)
+	// 計算結果から値を抽出(1 - 2x^2 - 2z^2, 0, 2xy - 2zw, 2yz + 2xw)
+	m.row[1] = SIMDVectorFloat::Shuffle<1, 3, 2, 1>(elementDiagonal, v0);
 
-	// 整列(2xy + 2zw, 1 - 2x^2 - 2z^2, 2yz - 2xw)
+	// 整列(2xy - 2zw, 1 - 2x^2 - 2z^2, 2yz + 2xw)
 	m.row[1] = SIMDVectorFloat::Shuffle<2, 0, 3, 1>(m.row[1]);
 
-	// 三行目(2xz - 2yw, 2yz + 2xw, 1 - 2x^2 - 2y^2)
-	// 計算結果から値を抽出(1 - x^2 - y^2, 0, 2yz + 2xw, 2xz - 2yw)
-	m.row[2] = SIMDVectorFloat::Shuffle<2, 3, 0, 2>(elementDiagonal, v1);
+	// 三行目(2xz + 2yw, 2yz - 2xw, 1 - 2x^2 - 2y^2)
+	// 計算結果から値を抽出(1 - x^2 - y^2, 0, 2yz - 2xw, 2xz + 2yw)
+	m.row[2] = SIMDVectorFloat::Shuffle<2, 3, 2, 0>(elementDiagonal, v1);
 
-	// 整列(2xz - 2yw, 2yz + 2xw, 1 - 2x^2 - 2y^2)
+	// 整列(2xz + 2yw, 2yz - 2xw, 1 - 2x^2 - 2y^2)
 	m.row[2] = SIMDVectorFloat::Shuffle<3, 2, 0, 1>(m.row[2]);
 
 	// 四行目は情報なし(０)
-	m.row[3] = SIMDVectorFloat{ 0.0f };
+	m.row[3] = SIMDVectorFloat{ 0.0f,0.0f,0.0f,1.0f };
 
 	return m;
 }
@@ -172,22 +172,24 @@ Matrix4x4 MatGenerateFunc::InverseTRS(const Vector3& _pos, const Quaternion& _ro
 
 Matrix4x4 MatGenerateFunc::LookAt(const Vector3& _eye, const Vector3& _target, const Vector3& _up)
 {
+	// 左手系
 	Vector3 frwd{ (_target - _eye).Normalize()};
-	Vector3 right{ Vector3::Cross(_up,frwd).Normalize() };
-	Vector3 up{ Vector3::Cross(frwd,right) };
+	Vector3 right{ Vector3::Cross(frwd,_up).Normalize() };
+	Vector3 up{ Vector3::Cross(right,frwd) };
 
 	// 右との内積
-	float dotR{ Vector3::Dot(frwd,_eye) };
+	float dotR{ Vector3::Dot(right,_eye) };
 	// 上との内積
 	float dotU{ Vector3::Dot(up,_eye) };
 	// 前との内積
 	float dotF{ Vector3::Dot(frwd,_eye) };
 
+	// 列ベクトル
 	return
 	{
-		right.x,up.x,-frwd.x,0.0f,
-		right.y,up.y,-frwd.y,0.0f,
-		right.z,up.z,-frwd.z,0.0f,
-		-dotR,-dotU,dotF,1.0f
+		right.x,up.x,frwd.x,0.0f,
+		right.y,up.y,frwd.y,0.0f,
+		right.z,up.z,frwd.z,0.0f,
+		-dotR,-dotU,-dotF,1.0f
 	};
 }

@@ -165,7 +165,6 @@
     <ClCompile Include="Codes\Scene\DebugScene\MizushimaDebugScene.cpp" />
     <ClCompile Include="Codes\Scene\DebugScene\TamuraDebugScene.cpp" />
     <ClCompile Include="Codes\Time\TimeManager.cpp" />
-    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -209,7 +208,6 @@
     <ClInclude Include="Codes\Time\TimeManager.h" />
     <ClInclude Include="Codes\Time\TimeController.h" />
     <ClInclude Include="Codes\Time\TimeReader.h" />
-    <ClInclude Include="InputManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

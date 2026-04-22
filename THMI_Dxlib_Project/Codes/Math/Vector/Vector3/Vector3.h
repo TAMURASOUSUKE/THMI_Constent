@@ -53,6 +53,11 @@ public:
 	{
 	}
 
+	Vector3(VECTOR _vec) :
+		simd(_vec.x, _vec.y, _vec.z, 0.0f)
+	{
+	}
+
 	// 型変換
 	operator SIMDVectorFloat() const
 	{
