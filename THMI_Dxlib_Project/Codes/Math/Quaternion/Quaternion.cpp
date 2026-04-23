@@ -48,7 +48,7 @@ Quaternion& Quaternion::Normalize(Quaternion& _rot)
 Quaternion Quaternion::operator*(const Quaternion& _value) const
 {
 	// 実部
-	float ansW{ w * _value.w + SIMDVectorMath::Dot3(simd,_value.simd) };
+	float ansW{ w * _value.w - SIMDVectorMath::Dot3(simd,_value.simd) };
 
 	// 虚部
 	// w1 * v2 + w2 * v1 + v1 × v2
@@ -60,15 +60,18 @@ Quaternion Quaternion::operator*(const Quaternion& _value) const
 			,SIMDVectorMath::Cross3(simd,_value.simd))
 	};
 
+	float elements[4];
+	vec.Store(&elements[0]);
+
 	// 実部と虚部の合成
-	return Quaternion{ SIMDVectorFloat::Blend<0x0001>(vec,ansW) };
+	return Quaternion{ elements[0],elements[1],elements[2],ansW };
 }
 
 // 乗法
 Quaternion Quaternion::operator*=(const Quaternion& _value)
 {
 	// 実部
-	float ansW = w * _value.w + SIMDVectorMath::Dot3(simd, _value.simd);
+	float ansW = w * _value.w - SIMDVectorMath::Dot3(simd, _value.simd);
 
 	// 虚部
 	// w1 * v2 + w2 * v1 + v1 × v2
@@ -81,7 +84,9 @@ Quaternion Quaternion::operator*=(const Quaternion& _value)
 			,SIMDVectorMath::Cross3(simd,_value.simd)) //  v1 × v2
 	};
 
-	simd = SIMDVectorFloat::Blend<0x0001>(vec, ansW);
+	vec.Store(&x);
+
+	w = ansW;
 
 	return *this;
 }
@@ -183,7 +188,7 @@ Quaternion Quaternion::Lerp(const Quaternion& _start, const Quaternion _end, flo
 }
 
 // 内積
-float Quaternion::Dot(const Quaternion& _rot1, const Quaternion& _rot2) const
+float Quaternion::Dot(const Quaternion& _rot1, const Quaternion& _rot2)
 {
 	return SIMDVectorMath::Dot4(_rot1.simd, _rot2.simd);
 }

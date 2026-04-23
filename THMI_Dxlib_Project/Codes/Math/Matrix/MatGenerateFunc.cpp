@@ -18,7 +18,7 @@ Matrix4x4 MatGenerateFunc::Scale(const Vector3& _scale)
 	{
 		_scale.x,0.0f,0.0f,0.0f,
 		0.0f,_scale.y,0.0f,0.0f,
-		0.0f,0.0f,_scale.x,0.0f,
+		0.0f,0.0f,_scale.z,0.0f,
 		0.0f,0.0f,0.0f,1.0f,
 	};
 }

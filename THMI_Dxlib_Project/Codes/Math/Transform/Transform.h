@@ -6,22 +6,13 @@
 
 struct  Transform
 {
-private:
-    // 位置
-    Vector3 position{ 0.0f,0.0f,0.0f };
-    // 回転
-    Quaternion rotation{};
-    // 大きさ
-    Vector3 scale{ 1.0f,1.0f,1.0f };
-
-    // ローカル行列
-    Matrix4x4 localMatrix;
-    // ワールド行列
-    Matrix4x4 worldMatrix;
-
-    // 親
-    Transform* parent{ nullptr };
 public:
+    // コンストラクタ
+    Transform()
+    {
+        UpdateLocalMatrix();
+    }
+
     // ローカル座標の前(z+方向)
     Vector3 Forward() const;
     // ローカル座標の右(x+方向)
@@ -57,7 +48,7 @@ public:
     // 大きさ更新系
     // 大きさを設定
     void SetScale(const Vector3& _scale);
-    // 書く方向に大きさをかける
+    // 各方向に大きさをかける
     void ScaleBy(const Vector3& _scale);
 
     // ローカル座標とワールド座標の変換系
@@ -94,7 +85,23 @@ public:
     /// <param name="_pos">位置を入れる変数</param>
     /// <param name="_rot">四元数を入れる変数</param>
     /// <param name="_scale">大きさを入れる変数</param>
-    static void DecomposeTRS(Matrix4x4& _mat, Vector3& _pos, Quaternion _rot, Vector3& _scale);
+    static void DecomposeTRS(Matrix4x4& _mat, Vector3& _pos, Quaternion& _rot, Vector3& _scale);
+
+private:
+    // 位置
+    Vector3 position{ 0.0f,0.0f,0.0f };
+    // 回転
+    Quaternion rotation{ 0.0f,0.0f,0.0f,1.0f };
+    // 大きさ
+    Vector3 scale{ 1.0f,1.0f,1.0f };
+
+    // ローカル行列
+    Matrix4x4 localMatrix;
+    // ワールド行列
+    Matrix4x4 worldMatrix;
+
+    // 親
+    Transform* parent{ nullptr };
 
 private:
     // ローカル行列更新

@@ -95,7 +95,7 @@ public:
 	static Quaternion Lerp(const Quaternion& _start, const Quaternion _end, float _t);
 
 	// 内積
-	float Dot(const Quaternion& _rot1,const Quaternion& _rot2) const;
+	static float Dot(const Quaternion& _rot1,const Quaternion& _rot2);
 
 	/// <summary>
 	/// どこかを見る回転を作る

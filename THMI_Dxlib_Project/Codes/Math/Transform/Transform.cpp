@@ -50,6 +50,7 @@ void Transform::Rotate(const Quaternion& _rot)
 {
 	rotation *= _rot;
 
+	rotation.Normalize();
 	// 行列更新
 	UpdateLocalMatrix();
 }
@@ -108,7 +109,7 @@ void Transform::SetScale(const Vector3& _scale)
 	// 行列更新
 	UpdateLocalMatrix();
 }
-// 書く方向に大きさをかける
+// 各方向に大きさをかける
 void Transform::ScaleBy(const Vector3& _scale)
 {
 	scale = SIMDVectorMath::Mul(scale, _scale);
@@ -182,7 +183,7 @@ void Transform::SetParent(Transform* _parent, bool keepLocal)
 }
 
 // TRSに分解する関数
-void Transform::DecomposeTRS(Matrix4x4& _mat, Vector3& _pos, Quaternion _rot, Vector3& _scale)
+void Transform::DecomposeTRS(Matrix4x4& _mat, Vector3& _pos, Quaternion& _rot, Vector3& _scale)
 {
 	// 位置
 	_pos = Vector3{ _mat.m[0][3],_mat.m[1][3],_mat.m[2][3] };
