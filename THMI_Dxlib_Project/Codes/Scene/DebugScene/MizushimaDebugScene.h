@@ -3,6 +3,8 @@
 #include "../Object/Bases/ObjectManager.h"
 #include "../Bases/SceneBase.h"
 
+#include "MDMath.h"
+
 // 水島用デバッグシーンの機能提供
 class MizushimaDebugScene : public SceneBase
 {
@@ -22,5 +24,10 @@ private:
 	SceneType Terminate() override; // シーンを抜ける際の処理
 
 private:
+	Transform trs{};
 	ObjectManager objManager{}; // オブジェクト管理用
+	int handle;
+	float norm;
+	int timer{ 0 };
+	Quaternion rot;
 };
