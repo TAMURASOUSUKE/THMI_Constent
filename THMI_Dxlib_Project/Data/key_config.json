@@ -1,0 +1,123 @@
+{
+    "Game": {
+        "Attack": {
+            "Keys": [
+                28
+            ],
+            "Pad": [
+                128
+            ]
+        },
+        "Avoid": {
+            "Keys": [
+                57
+            ],
+            "Pad": [
+                16
+            ]
+        },
+        "Down": {
+            "Keys": [
+                31,
+                208
+            ],
+            "Pad": [
+                1
+            ]
+        },
+        "Left": {
+            "Keys": [
+                30,
+                203
+            ],
+            "Pad": [
+                2
+            ]
+        },
+        "Right": {
+            "Keys": [
+                32,
+                205
+            ],
+            "Pad": [
+                4
+            ]
+        },
+        "Up": {
+            "Keys": [
+                17,
+                200
+            ],
+            "Pad": [
+                8
+            ]
+        }
+    },
+    "MouseSensibility": 0.004999999888241291,
+    "RightStickDeadZone": 5000,
+    "RightStickSensibility": 1.0,
+    "TriggerDeadZone": 128,
+    "UI": {
+        "Cancel": {
+            "Keys": [
+                16
+            ],
+            "Pad": [
+                16
+            ]
+        },
+        "Decide": {
+            "Keys": [
+                18
+            ],
+            "Pad": [
+                32
+            ]
+        },
+        "Down": {
+            "Keys": [
+                31,
+                208
+            ],
+            "Pad": [
+                1
+            ]
+        },
+        "Left": {
+            "Keys": [
+                30,
+                203
+            ],
+            "Pad": [
+                2
+            ]
+        },
+        "Pause": {
+            "Keys": [
+                1
+            ],
+            "Pad": [
+                8192,
+                8192
+            ]
+        },
+        "Right": {
+            "Keys": [
+                32,
+                205
+            ],
+            "Pad": [
+                4
+            ]
+        },
+        "Up": {
+            "Keys": [
+                17,
+                200
+            ],
+            "Pad": [
+                8
+            ]
+        }
+    }
+}

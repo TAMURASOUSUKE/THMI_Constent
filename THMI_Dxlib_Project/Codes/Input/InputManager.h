@@ -4,7 +4,7 @@
 #include <Dxlib.h>
 #include "GameConstant/GameKey.h"
 #include "SystemConstant/SystemConstant.h"
-#include "../Math/Vector/Vector2/Vector2.h"
+#include "../Math/MDMath.h"
 
 //  入力管理を行うファイル
 class InputManager
@@ -68,6 +68,18 @@ public:
 	// アクションに二つ目のサブボタンを追加(UI操作状態)
 	void AddButtonBinding(ActionID::UI _action, int _button);
 
+	// マウスボタンのゲーム入力を設定する
+	void SetBindingMouse(ActionID::GameAction _action, int _mouseButton);
+	
+	// マウスボタンのUI入力 
+	void SetBindingMouse(ActionID::UI _action, int _mouseButton);
+
+	// サブ入力
+	void AddMouseBinding(ActionID::GameAction _action, int _mouseButton);
+
+	// サブ入力
+	void AddMouseBinding(ActionID::UI _action, int _mouseButton);
+
 	// 現在の入力状態を変更する
 	void SetInputMode(const InputMode _inputMode);
 
@@ -75,8 +87,8 @@ public:
 	int GetAnyPressedKey() const;
 
 	// 押されたボタンを返す
-	int GetAnyPressButton() const;
-
+	int GetAnyPressedButton() const;
+	
 	// 入力判定
 	bool GetButtonStay(ActionID::GameAction _key) const; // 押している間 : ゲーム中
 	bool GetButtonStay(ActionID::UI _key) const; // 押している間 : UI中
@@ -118,6 +130,7 @@ private:
 	int prevMousePosX{ 0 }; // マウスのX座標
 	int prevMousePosY{ 0 }; // マウスのY座標
 	int padStickRDeadZone{ 5000 }; // Rスティックを動かすときのデッドゾーン
+	int currentMouseInput{ 0 }; // 現在のマウスインプット状態
 #ifdef _DEBUG
 	int windowWidth{ DEBUG_WINDOW_WIDTH }; // 画面横幅(デバッグ時)
 	int windowHeight{ DEBUG_WINDOW_HEIGHT }; // 画面縦幅(デバッグ時)

@@ -1,7 +1,6 @@
 #include <unordered_map>
 #include <fstream>
 #include "../nlohmann/json.hpp" // キーコンフィグ設定を保存するためのJsonを簡単に使えるようにするためのライブラリ
-#include "../Math/Vector/Vector2Int/Vector2Int.h"
 #include "InputManager.h"
 
 using json = nlohmann::json; // 変数名省略
@@ -70,10 +69,12 @@ void InputManager::Update()
 {
 	// 前フレームの状態を保存
 	prevGameStates = currentGameStates;
+	prevUIStates = currentUIStates;
 
 	GetHitKeyStateAll(currentKeyBuffer.data()); // 現在の入力状態を取得
 	currentPadInput = GetJoypadInputState(DX_INPUT_PAD1); // パッドの現在の入力状態を取得
 	GetJoypadXInputState(DX_INPUT_PAD1, &xinputState); // Triggerなどの状態を取得
+	currentMouseInput = GetMouseInput(); // マウスの状態を取得
 
 	// ボタン更新
 	UpdateGameKey();
@@ -100,7 +101,8 @@ void InputManager::SaveConfig()
 		root["Game"][keyName] =
 		{
 			{"Keys", gameBindings[i].keyboardKeys}, // vectorは自動的に配列保存される
-			{"Pad", gameBindings[i].padButtonMasks}
+			{"Pad", gameBindings[i].padButtonMasks},
+			{"Click", gameBindings[i].clickMasks},
 		};
 	}
 
@@ -111,10 +113,11 @@ void InputManager::SaveConfig()
 		std::string keyName{ UIKeyToString(key) }; // GameKeyの名前を文字列型へ変換する
 
 		// InputBindingの内容をJsonに詰める
-		root["Game"][keyName] =
+		root["UI"][keyName] =
 		{
-			{"Keys", gameBindings[i].keyboardKeys}, // vectorは自動的に配列保存される
-			{"Pad", gameBindings[i].padButtonMasks}
+			{"Keys", uiBindings[i].keyboardKeys}, // vectorは自動的に配列保存される
+			{"Pad", uiBindings[i].padButtonMasks},
+			{"Click", uiBindings[i].clickMasks},
 		};
 	}
 
@@ -172,6 +175,7 @@ void InputManager::LoadConfig()
 				// 値を取り出す
 				gameBindings[index].keyboardKeys = element.value()["keys"].get<std::vector<int>>(); // キーボード
 				gameBindings[index].padButtonMasks = element.value()["pad"].get<std::vector<int>>(); // ボタン
+				gameBindings[index].clickMasks = element.value()["click"].get <std::vector<int>>(); // クリック
 			}
 		}
 
@@ -188,7 +192,8 @@ void InputManager::LoadConfig()
 				int index{ static_cast<int>(key) }; // UI型をintへキャッシュ
 
 				uiBindings[index].keyboardKeys = element.value()["keys"].get<std::vector<int>>(); // int型配列として取得
-				uiBindings[index].padButtonMasks = element.value()["pad"].get<std::vector<int>>(); // int型配列として保存
+				uiBindings[index].padButtonMasks = element.value()["pad"].get<std::vector<int>>(); // int型配列として取得
+				uiBindings[index].clickMasks = element.value()["click"].get <std::vector<int>>(); // int型配列として取得
 			}
 		}
 
@@ -252,7 +257,7 @@ void InputManager::AddKeyBinding(ActionID::GameAction _action, int _key)
 void InputManager::AddKeyBinding(ActionID::UI _action, int _key)
 {
 	int index{ static_cast<int>(_action) }; // インデックスのキャッシュ
-	gameBindings[index].keyboardKeys.push_back(_key);
+	uiBindings[index].keyboardKeys.push_back(_key);
 }
 
 // ボタンの入力設定
@@ -286,7 +291,41 @@ void InputManager::AddButtonBinding(ActionID::UI _action, int _button)
 {
 	// サブボタンをセットする
 	int index{ static_cast<int>(_action) };
-	gameBindings[index].padButtonMasks.push_back(_button);
+	uiBindings[index].padButtonMasks.push_back(_button);
+}
+
+// ゲーム中のマウスクリックの設定
+void InputManager::SetBindingMouse(ActionID::GameAction _action, int _mouseButton)
+{
+	int index{ static_cast<int>(_action) };
+
+	gameBindings[index].clickMasks.clear(); // リセット
+	gameBindings[index].clickMasks.push_back(_mouseButton);
+}
+
+// UI操作中のマウスクリックの設定
+void InputManager::SetBindingMouse(ActionID::UI _action, int _mouseButton)
+{
+	int index{ static_cast<int>(_action) };
+
+	uiBindings[index].clickMasks.clear(); // リセット
+	uiBindings[index].clickMasks.push_back(_mouseButton);
+}
+
+// ゲーム中のクリックのサブ設定
+void InputManager::AddMouseBinding(ActionID::GameAction _action, int _mouseButton)
+{
+	// サブボタンをセットする
+	int index{ static_cast<int>(_action) };
+	gameBindings[index].clickMasks.push_back(_mouseButton);
+}
+
+// UI操作中のクリックのサブ設定
+void InputManager::AddMouseBinding(ActionID::UI _action, int _mouseButton)
+{
+	// サブボタンをセットする
+	int index{ static_cast<int>(_action) };
+	gameBindings[index].clickMasks.push_back(_mouseButton);
 }
 
 // モードの設定
@@ -311,7 +350,7 @@ int InputManager::GetAnyPressedKey() const
 }
 
 // 押されたボタンを返す
-int InputManager::GetAnyPressButton() const
+int InputManager::GetAnyPressedButton() const
 {
 	// 調べるボタンをまとめたリスト(トリガー以外)
 	int checkButttons[]{
@@ -374,7 +413,6 @@ void InputManager::UpdateGameKey()
 	// sitc変数をVector2にまとめつつ値を-1.0～1.0まで丸める
 	Vector2 stick{ stickX / MAX_XINPUT_VALUE, stickY / MAX_XINPUT_VALUE };
 	axis += stick * padStickSensibility;
-	axis += { stickX,stickY };
 
 	// 移動ベクトル作成
 	if (currentGameStates[Index(ActionID::GameAction::Up)]) axis.y += 1.0f;
@@ -382,15 +420,24 @@ void InputManager::UpdateGameKey()
 	if (currentGameStates[Index(ActionID::GameAction::Right)]) axis.x += 1.0f;
 	if (currentGameStates[Index(ActionID::GameAction::Left)]) axis.x -= 1.0f;
 
-	// 正規化処理
-	axis.Normalize();
+	// 0ベクトル対策つき正規化
+	float lenSq = axis.x * axis.x + axis.y * axis.y;
+
+	if (lenSq > 0.0001f)
+	{
+		axis.Normalize();
+	}
+	else
+	{
+		axis = Vector2::ZERO;
+	}
 }
 
 void InputManager::UpdateCameraInput()
 {
 	if (currentMode != InputMode::Game) return; // ゲーム中でないなら計算しない
 
-	cameraAxis.Zero; // 毎フレームリセット
+	cameraAxis = Vector2::ZERO; // 毎フレームリセット
 
 	// マウス処理
 	int mouseX;
@@ -433,7 +480,7 @@ void InputManager::UpdateCameraInput()
 
 		// 移動量が爆増するのでprevMousePosを更新することで避ける
 		prevMousePosX = center.x;
-		prevMousePosY = center.x;
+		prevMousePosY = center.y;
 	}
 }
 
@@ -446,7 +493,7 @@ bool InputManager::GetButtonStay(ActionID::GameAction _key) const
 
 bool InputManager::GetButtonStay(ActionID::UI _key) const
 {
-	if (currentMode != InputMode::Game) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Menu) return false; // 現在の状態がGame出なかったら反応しないようにする
 	return currentUIStates[static_cast<int>(_key)];
 }
 
@@ -460,24 +507,24 @@ bool InputManager::GetButtonDown(ActionID::GameAction _key) const
 
 bool InputManager::GetButtonDown(ActionID::UI _key) const
 {
-	if (currentMode != InputMode::Game) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Menu) return false; // 現在の状態がGame出なかったら反応しないようにする
 	int index{ static_cast<int>(_key) }; // Enumをキャストしてキャッシュする
-	return currentUIStates[index] && !prevGameStates[index]; // 前フレームではfalse現フレームtrue
+	return currentUIStates[index] && !prevUIStates[index]; // 前フレームではfalse現フレームtrue
 }
 
 // 離した瞬間
 bool InputManager::GetButtonUp(ActionID::GameAction _key) const
 {
-	if (currentMode != InputMode::Game) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Menu) return false; // 現在の状態がGame出なかったら反応しないようにする
 	int index{ static_cast<int>(_key) }; // インデックスをキャスト
 	return !currentGameStates[index] && prevGameStates[index]; // 現フレームでは離しており前フレームでは離していない
 }
 
 bool InputManager::GetButtonUp(ActionID::UI _key) const
 {
-	if (currentMode != InputMode::Game) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Menu) return false; // 現在の状態がGame出なかったら反応しないようにする
 	int index{ static_cast<int>(_key) }; // インデックスをキャスト
-	return !currentUIStates[index] && prevGameStates[index]; // 現フレームでは離しており前フレームでは離していない
+	return !currentUIStates[index] && prevUIStates[index]; // 現フレームでは離しており前フレームでは離していない
 }
 
 
@@ -486,7 +533,7 @@ bool InputManager::GetButtonUp(ActionID::UI _key) const
 void InputManager::UpdateState(const auto& _bindingsArray, auto& _stateArray, int _count)
 {
 	// 全探索を行う
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < _count; i++)
 	{
 		const auto& binding{ _bindingsArray[i] }; // 現在のキーをキャッシュする
 		bool isDown{ false }; // 押されたか判定する
@@ -537,6 +584,20 @@ void InputManager::UpdateState(const auto& _bindingsArray, auto& _stateArray, in
 			}
 		}
 
+		// クリック判定
+		if (!isDown)
+		{
+			for (int mouse : binding.clickMasks)
+			{
+				// 何かが押されていればtrue
+				if ((currentMouseInput & mouse) != 0)
+				{
+					isDown = true;
+					break;
+				}
+			}
+		}
+
 		// まだ押されていなかったらキーボードを判定する
 		if (!isDown)
 		{
@@ -566,7 +627,6 @@ void InputManager::SetDefaultBindings()
 	SetBindingKey(ActionID::GameAction::Down, KEY_INPUT_S);
 	SetBindingKey(ActionID::GameAction::Right, KEY_INPUT_D);
 	SetBindingKey(ActionID::GameAction::Left, KEY_INPUT_A);
-	SetBindingKey(ActionID::GameAction::Attack, KEY_INPUT_RETURN); // 今後クリックに対応
 	SetBindingKey(ActionID::GameAction::Avoid, KEY_INPUT_SPACE);
 
 	SetBindingKey(ActionID::UI::Up, KEY_INPUT_W);
@@ -592,6 +652,9 @@ void InputManager::SetDefaultBindings()
 	SetBindingPad(ActionID::UI::Cancel, PadCode::SOUTH);
 	SetBindingPad(ActionID::UI::Pause, PadCode::START);
 	SetBindingPad(ActionID::GameAction::Up, PadCode::UP);
+
+	SetBindingMouse(ActionID::GameAction::Attack, ClickCode::LEFT);
+	SetBindingMouse(ActionID::UI::Decide, ClickCode::LEFT);
 
 	// サブキー
 	AddKeyBinding(ActionID::GameAction::Up, KEY_INPUT_UP);

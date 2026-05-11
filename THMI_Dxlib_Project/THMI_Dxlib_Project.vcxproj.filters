@@ -139,9 +139,6 @@
     <ClCompile Include="Codes\Time\TimeManager.cpp">
       <Filter>ソース ファイル\Time</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>ソース ファイル\Input</Filter>
-    </ClCompile>
     <ClCompile Include="Codes\Math\Matrix\MatGenerateFunc.cpp">
       <Filter>ソース ファイル\Math\Matrix</Filter>
     </ClCompile>
@@ -162,6 +159,9 @@
     </ClCompile>
     <ClCompile Include="Codes\Math\Vector\Vector3\Vector3Int.cpp">
       <Filter>ソース ファイル\Math\Vector\Vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="Codes\Input\InputManager.cpp">
+      <Filter>ソース ファイル\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,9 +258,6 @@
     <ClInclude Include="Codes\Time\TimeReader.h">
       <Filter>ソース ファイル\Time</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>ソース ファイル\Input</Filter>
-    </ClInclude>
     <ClInclude Include="Codes\Constant\GameConstant\GameKey.h">
       <Filter>ソース ファイル\Constant\GameConstant</Filter>
     </ClInclude>
@@ -287,6 +284,9 @@
     </ClInclude>
     <ClInclude Include="Codes\Math\Vector\Vector3\Vector3Int.h">
       <Filter>ソース ファイル\Math\Vector\Vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Input\InputManager.h">
+      <Filter>ソース ファイル\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
