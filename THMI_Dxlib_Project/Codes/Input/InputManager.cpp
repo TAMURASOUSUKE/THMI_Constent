@@ -325,13 +325,17 @@ void InputManager::AddMouseBinding(ActionID::UI _action, int _mouseButton)
 {
 	// サブボタンをセットする
 	int index{ static_cast<int>(_action) };
-	gameBindings[index].clickMasks.push_back(_mouseButton);
+	uiBindings[index].clickMasks.push_back(_mouseButton);
 }
 
 // モードの設定
 void InputManager::SetInputMode(const InputMode _inputMode)
 {
+	if (currentMode == _inputMode) return; // 同じなら何もしない
 	currentMode = _inputMode;
+
+	prevGameStates = currentGameStates;
+	prevUIStates = currentUIStates;
 }
 
 // 押されたキーを返す
@@ -487,27 +491,27 @@ void InputManager::UpdateCameraInput()
 // 押している間
 bool InputManager::GetButtonStay(ActionID::GameAction _key) const
 {
-	if (currentMode != InputMode::Game) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Game) return false; // 現在の状態がGameでなかったら反応しないようにする
 	return currentGameStates[static_cast<int>(_key)];
 }
 
 bool InputManager::GetButtonStay(ActionID::UI _key) const
 {
-	if (currentMode != InputMode::Menu) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Menu) return false; // 現在の状態がGameでなかったら反応しないようにする
 	return currentUIStates[static_cast<int>(_key)];
 }
 
 // 押した瞬間
 bool InputManager::GetButtonDown(ActionID::GameAction _key) const
 {
-	if (currentMode != InputMode::Game) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Game) return false; // 現在の状態がGameでなかったら反応しないようにする
 	int index{ static_cast<int>(_key) }; // Enumをキャストしてキャッシュする
 	return currentGameStates[index] && !prevGameStates[index]; // 前フレームではfalse現フレームtrue
 }
 
 bool InputManager::GetButtonDown(ActionID::UI _key) const
 {
-	if (currentMode != InputMode::Menu) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Menu) return false; // 現在の状態がGameでなかったら反応しないようにする
 	int index{ static_cast<int>(_key) }; // Enumをキャストしてキャッシュする
 	return currentUIStates[index] && !prevUIStates[index]; // 前フレームではfalse現フレームtrue
 }
@@ -515,14 +519,14 @@ bool InputManager::GetButtonDown(ActionID::UI _key) const
 // 離した瞬間
 bool InputManager::GetButtonUp(ActionID::GameAction _key) const
 {
-	if (currentMode != InputMode::Menu) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Game) return false; // 現在の状態がGameでなかったら反応しないようにする
 	int index{ static_cast<int>(_key) }; // インデックスをキャスト
 	return !currentGameStates[index] && prevGameStates[index]; // 現フレームでは離しており前フレームでは離していない
 }
 
 bool InputManager::GetButtonUp(ActionID::UI _key) const
 {
-	if (currentMode != InputMode::Menu) return false; // 現在の状態がGame出なかったら反応しないようにする
+	if (currentMode != InputMode::Menu) return false; // 現在の状態がGameでなかったら反応しないようにする
 	int index{ static_cast<int>(_key) }; // インデックスをキャスト
 	return !currentUIStates[index] && prevUIStates[index]; // 現フレームでは離しており前フレームでは離していない
 }

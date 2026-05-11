@@ -210,9 +210,6 @@
     <ClInclude Include="Codes\Object\Bases\ObjectBase.h">
       <Filter>ソース ファイル\Object\Bases</Filter>
     </ClInclude>
-    <ClInclude Include="Codes\Constant\GameConstant\GameConstant.h">
-      <Filter>ソース ファイル\Constant\GameConstant</Filter>
-    </ClInclude>
     <ClInclude Include="Codes\Object\Bases\WorldObjectBase.h">
       <Filter>ソース ファイル\Object\Bases</Filter>
     </ClInclude>
@@ -287,6 +284,9 @@
     </ClInclude>
     <ClInclude Include="Codes\Input\InputManager.h">
       <Filter>ソース ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Codes\Constant\GameConstant\GameConstant.h">
+      <Filter>ソース ファイル\Constant\ResourceConstant</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
